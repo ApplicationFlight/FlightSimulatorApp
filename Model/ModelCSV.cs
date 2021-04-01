@@ -12,7 +12,6 @@ namespace FlightSimulatorApp.Model {
 
     using FlightSimulatorApp.ViewModel;
 
-
     class ModelCSV : INotifyPropertyChanged {
         private string file_CSV;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -44,4 +43,3 @@ namespace FlightSimulatorApp.Model {
         }
     }
 }
-
