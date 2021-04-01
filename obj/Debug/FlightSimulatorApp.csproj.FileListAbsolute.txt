@@ -1,0 +1,43 @@
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe.config
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.pdb
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csprojAssemblyReference.cache
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\MainWindow.g.cs
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\App.g.cs
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.cache
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.lref
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\MainWindow.baml
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.g.resources
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.Properties.Resources.resources
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.GenerateResource.cache
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.exe
+C:\Users\eva\Google Drive\bar ilan\שנה ב תפא 20-21\סמסטר ב\תכנות מתקדם 2\projet1 desktop app\code\FlightSimulatorAnalyse\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.pdb
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe.config
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.pdb
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csprojAssemblyReference.cache
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\MainWindow.g.cs
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\App.g.cs
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.cache
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.lref
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\MainWindow.baml
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.g.resources
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.Properties.Resources.resources
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.GenerateResource.cache
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.exe
+C:\Users\samue\Downloads\Nouveau WinRAR ZIP archive\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.pdb
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe.config
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.exe
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\FlightSimulatorApp.pdb
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csprojAssemblyReference.cache
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\MainWindow.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\App.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.cache
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp_MarkupCompile.lref
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\MainWindow.baml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.g.resources
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.Properties.Resources.resources
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.GenerateResource.cache
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.CoreCompileInputs.cache
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.exe
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.pdb
