@@ -22,20 +22,11 @@ namespace FlightSimulatorApp.View {
     public partial class Page2 : Page {
 
         private CSViewModel vm;
-        DispatcherTimer timer; 
         
         public Page2(CSViewModel vm) {
             InitializeComponent();
             this.vm = vm;
             DataContext = vm;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(vm.VM_Speed * 10);
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
-        }
-
-        void timer_Tick(Object sender, EventArgs e) {
-            //Slider_Time.Value = vm.VM_Percentage;       
         }
 
         private void Play_Click(object sender, RoutedEventArgs e) {
