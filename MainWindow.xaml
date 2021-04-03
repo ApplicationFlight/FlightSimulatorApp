@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
         Title="Flight Simulator" Height="680" Width="1250">
-    <Grid Background="#FFB9B2B2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="UploadCVSButton" Content="Upload CSV file" HorizontalAlignment="Left" Margin="530,472,0,0" VerticalAlignment="Top" Width="186" Click="UploadCVSButton_Click" Height="71" FontSize="20"/>
-        <TextBlock TextWrapping="Wrap" Text="Welcome to Flight Simulator" VerticalAlignment="Center" Margin="367,258,377,241" Height="152" Width="500" FontSize="48" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Microsoft YaHei UI"/>
-    </Grid>
+	<Grid Background="#FFB9B2B2">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Button x:Name="UploadCVSButton" Content="Upload CSV file" HorizontalAlignment="Left" Margin="530,472,0,0" VerticalAlignment="Top" Width="186" Click="UploadCVSButton_Click" Height="71" FontSize="20"/>
+		<TextBlock TextWrapping="Wrap" Text="Welcome to Flight Simulator" VerticalAlignment="Center" Margin="367,258,377,241" Height="152" Width="500" FontSize="48" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Microsoft YaHei UI"/>
+		<Button x:Name="ContinueButton" Content="Continue" HorizontalAlignment="Left" Margin="1071,543,0,0" VerticalAlignment="Top" Width="146" FontSize="20" Height="46" Click="Continue_Click"/>
+		<Frame x:Name="main_f" />
+	</Grid>
 </Window>

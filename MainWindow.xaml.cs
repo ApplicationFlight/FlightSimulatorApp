@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using FlightSimulatorApp.Model;
 using FlightSimulatorApp.ViewModel;
-
+using FlightSimulatorApp.View;
 
 namespace FlightSimulatorApp {
     /// <summary>
@@ -36,6 +36,10 @@ namespace FlightSimulatorApp {
             if (response == true) {
                 vm.setFile(fileDialog.FileName); //path of the CSV file
             }
+        }
+
+        private void Continue_Click(object sender, RoutedEventArgs e) {
+            main_f.Content = new Page2(vm);
         }
     }
 }

@@ -41,3 +41,5 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.CoreCompileInputs.cache
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.exe
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.pdb
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\Page2.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\Page2.baml
