@@ -20,6 +20,7 @@ namespace FlightSimulatorApp.Model  {
         float Percentage { set; get; }
         int Speed { set; get; }
         bool Is_running { set; get; }
+        int Relative_time { set; get; }
         TimeSeries Timeseries { set; get; }
 
     }

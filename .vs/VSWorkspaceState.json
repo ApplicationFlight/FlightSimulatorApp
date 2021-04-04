@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Model",
+    "\\View",
     "\\ViewModel"
   ],
-  "SelectedNode": "\\Model\\ModelCSV.cs",
+  "SelectedNode": "\\FlightSimulatorApp.sln",
   "PreviewInSolutionExplorer": false
 }

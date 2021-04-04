@@ -62,6 +62,9 @@
     <Compile Include="View\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,7 +73,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\CSViewModel.cs" />
+    <Compile Include="ViewModel\VideoPlayerViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,11 +82,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
+    <Page Include="View\UserControls\VideoPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ModelCSV.cs" />
     <Compile Include="View\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -39,6 +39,7 @@ namespace FlightSimulatorApp.Model {
             }
             set {
                 this.percentage = value;
+                this.Relative_time = get_index_from_percentage(this.percentage);
                 NotifyPropertyChanged("Percentage");
             } 
         }
@@ -60,6 +61,17 @@ namespace FlightSimulatorApp.Model {
             }
             set {
                 this.is_running = value;
+            }
+        }
+
+        private int relative_time;
+        public int Relative_time {
+            get {
+                return relative_time;
+            }
+            set {
+                this.relative_time = value;
+                NotifyPropertyChanged("Relative_time");
             }
         }
 

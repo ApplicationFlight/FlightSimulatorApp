@@ -22,11 +22,11 @@ namespace FlightSimulatorApp {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        CSViewModel vm;
+        VideoPlayerViewModel vm;
       
         public MainWindow() {
             InitializeComponent();
-            vm = new CSViewModel(new ModelCSV());
+            vm = new VideoPlayerViewModel();
             DataContext = vm;
         }
 

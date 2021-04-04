@@ -8,15 +8,14 @@ using System.ComponentModel;
 namespace FlightSimulatorApp.ViewModel {
 
     using FlightSimulatorApp.Model;
-
-    public class CSViewModel : INotifyPropertyChanged {
+    public class VideoPlayerViewModel : INotifyPropertyChanged {
 
         private IModelCSV modelCSV;
         private TimeSeries timeseries;
         public event PropertyChangedEventHandler PropertyChanged; 
 
-        public CSViewModel(IModelCSV modelCSV) {
-            this.modelCSV = modelCSV;
+        public VideoPlayerViewModel() {
+            this.modelCSV = new ModelCSV();
             this.modelCSV.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
@@ -48,21 +47,18 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        /*private string VM_overall_time;
+        private string VM_overall_time;
         public string VM_Overall_time {
             get {
                 return VM_overall_time;
             }
         }
 
-        private string VM_relative_time;
         public string VM_Relative_time {
             get {
-                return VM_relative_time;
+                return get_time_from_seconds(modelCSV.Relative_time/10);
             }
-        }*/
-
-        
+        }
         
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
@@ -70,10 +66,15 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
+        string get_time_from_seconds(int seconds) {
+            TimeSpan t = TimeSpan.FromSeconds(seconds);
+            return string.Format("{0:D2}:{1:D2}:{2:D2}s",t.Hours,t.Minutes,t.Seconds,t.Milliseconds);
+        }
+
         public void setFile(string file_path) {
             this.timeseries = new TimeSeries(file_path);
             this.modelCSV.Timeseries = this.timeseries;
-            //VM_overall_time = (this.timeseries.n_lines * 100).ToString();
+            VM_overall_time = get_time_from_seconds(this.timeseries.n_lines/10);
             this.modelCSV.connect();
             this.modelCSV.start();
             // TODO: think about where disconnect
