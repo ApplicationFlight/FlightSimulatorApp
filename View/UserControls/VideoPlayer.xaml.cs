@@ -28,18 +28,10 @@ namespace FlightSimulatorApp.View.UserControls {
             get {
                 return this.vm; 
             }
-        }
-
-        public void setViewModel(VideoPlayerViewModel vm) {
-            this.vm = vm; 
-        }
-
-
-        //public string Title { get; set; }
+        }   
 
         public VideoPlayer() {
-            InitializeComponent();
-            this.DataContext = this;  
+            InitializeComponent(); 
         }
 
         private void Play_Click(object sender, RoutedEventArgs e) {

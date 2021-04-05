@@ -21,6 +21,11 @@ namespace FlightSimulatorApp.Model  {
         int Speed { set; get; }
         bool Is_running { set; get; }
         int Relative_time { set; get; }
+        float[] Selected_data { set; get; }
+        float Throttle { set; get; }
+        float Aileron { set; get; }
+        float Elevator { set; get; }
+        float Rudder { set; get; }
         TimeSeries Timeseries { set; get; }
 
     }

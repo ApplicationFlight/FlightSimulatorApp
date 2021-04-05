@@ -48,3 +48,5 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\GeneratedInternalTy
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\VideoPlayer.baml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\DataFlight.g.cs
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\DataFlight.baml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\Joystick.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\Joystick.baml

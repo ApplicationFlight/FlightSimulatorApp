@@ -17,29 +17,30 @@ using FlightSimulatorApp.Model;
 using FlightSimulatorApp.ViewModel;
 using FlightSimulatorApp.View;
 
+
 namespace FlightSimulatorApp {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        VideoPlayerViewModel vm;
+        ModelCSV model;
       
         public MainWindow() {
             InitializeComponent();
-            vm = new VideoPlayerViewModel();
-            DataContext = vm;
+            this.model = new ModelCSV();
+            //DataContext = model;
         }
 
         private void UploadCVSButton_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog fileDialog = new OpenFileDialog();
             bool? response = fileDialog.ShowDialog();
             if (response == true) {
-                vm.setFile(fileDialog.FileName); //path of the CSV file
+                this.model.setFile(fileDialog.FileName); //path of the CSV file
             }
         }
 
         private void Continue_Click(object sender, RoutedEventArgs e) {
-            main_f.Content = new Page2(vm);
+            main_f.Content = new Page2(model);
         }
     }
 }

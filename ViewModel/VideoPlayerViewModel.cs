@@ -11,14 +11,14 @@ namespace FlightSimulatorApp.ViewModel {
     public class VideoPlayerViewModel : INotifyPropertyChanged {
 
         private IModelCSV modelCSV;
-        private TimeSeries timeseries;
         public event PropertyChangedEventHandler PropertyChanged; 
 
-        public VideoPlayerViewModel() {
-            this.modelCSV = new ModelCSV();
+        public VideoPlayerViewModel(ModelCSV model) {
+            this.modelCSV = model;
             this.modelCSV.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+            //VM_overall_time = get_time_from_seconds(model.Timeseries.n_lines / 10);
         }
 
         public float VM_Percentage {
@@ -69,15 +69,6 @@ namespace FlightSimulatorApp.ViewModel {
         string get_time_from_seconds(int seconds) {
             TimeSpan t = TimeSpan.FromSeconds(seconds);
             return string.Format("{0:D2}:{1:D2}:{2:D2}s",t.Hours,t.Minutes,t.Seconds,t.Milliseconds);
-        }
-
-        public void setFile(string file_path) {
-            this.timeseries = new TimeSeries(file_path);
-            this.modelCSV.Timeseries = this.timeseries;
-            VM_overall_time = get_time_from_seconds(this.timeseries.n_lines/10);
-            this.modelCSV.connect();
-            this.modelCSV.start();
-            // TODO: think about where disconnect
         }
     }
 }

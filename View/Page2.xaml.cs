@@ -17,17 +17,21 @@ using System.Windows.Threading;
 namespace FlightSimulatorApp.View {
      
     using FlightSimulatorApp.ViewModel;
+    using FlightSimulatorApp.Model;
     using FlightSimulatorApp.View.UserControls;
     using System.ComponentModel;
 
     public partial class Page2 : Page {
 
-        public VideoPlayerViewModel vm;
-        public Page2(VideoPlayerViewModel vm) {
+        public ModelCSV model;
+        public Page2(ModelCSV model) {
             InitializeComponent();
-            this.vm = vm;
-            DataContext = vm;
-            videoplayer.VM = this.vm;
-        }  
+            this.model = model;
+            //DataContext = vm;
+            videoplayer.VM = new VideoPlayerViewModel(this.model);
+            dataflight.VM = new DataFlightViewModel(this.model);
+            joystick.VM = new JoystickViewModel(this.model);
+
+        }
     }
 }

@@ -15,23 +15,24 @@ using System.Windows.Shapes;
 
 namespace FlightSimulatorApp.View.UserControls {
     using FlightSimulatorApp.ViewModel;
+
     /// <summary>
-    /// Interaction logic for DataFlight.xaml
+    /// Interaction logic for Joystick.xaml
     /// </summary>
-    public partial class DataFlight : UserControl {
-        private DataFlightViewModel vm;
-        public DataFlightViewModel VM {
+    public partial class Joystick : UserControl {
+
+        private JoystickViewModel vm;
+        public JoystickViewModel VM {
             set {
                 this.vm = value;
                 DataContext = vm;
-                //this.listBox.ItemsSource = new int[] { 1, 3, 5, 7, 9 };
             }
             get {
                 return this.vm;
             }
         }
-        public DataFlight() {
+        public Joystick() {
             InitializeComponent();
-        }  
+        }
     }
 }

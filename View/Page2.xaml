@@ -6,16 +6,17 @@
       xmlns:local="clr-namespace:FlightSimulatorApp.View" 
       xmlns:UserControls="clr-namespace:FlightSimulatorApp.View.UserControls"
       mc:Ignorable="d" 
-      Title="Page2" Height="680" Width="1250">
+      Title="Page2" Height="600" Width="600">
 
 
 
     <Grid Background="#FFB9B2B2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="419*"/>
-            <RowDefinition Height="261*"/>
+            <RowDefinition/>
+            <RowDefinition Height="230.4"/>
         </Grid.RowDefinitions>
         <UserControls:VideoPlayer x:Name="videoplayer"  HorizontalAlignment="Left" Margin="19,0,0,40" VerticalAlignment="Bottom" Height="88" Width="453" Grid.Row="1"/>
-        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="0,1,0,86.2" Width="355"/>
+        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="0,1,0,61.6" Width="283" d:LayoutOverrides="HorizontalAlignment"/>
+        <UserControls:Joystick x:Name="joystick"  HorizontalAlignment="Left" Margin="363,1,0,122.6" Width="211" />
     </Grid>
 </Page>
