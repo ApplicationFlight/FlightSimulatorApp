@@ -58,9 +58,12 @@
     <Compile Include="Model\IModelCSV.cs" />
     <Compile Include="Model\ItelnetClient.cs" />
     <Compile Include="Model\TelnetClient.cs" />
-    <Compile Include="ViewModel\TimeSeries.cs" />
+    <Compile Include="Model\TimeSeries.cs" />
     <Compile Include="View\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\DataFlight.xaml.cs">
+      <DependentUpon>DataFlight.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
@@ -81,6 +84,10 @@
     <Page Include="View\Page2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="View\UserControls\DataFlight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\VideoPlayer.xaml">
       <SubType>Designer</SubType>

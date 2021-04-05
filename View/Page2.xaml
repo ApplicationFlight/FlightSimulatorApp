@@ -11,8 +11,11 @@
 
 
     <Grid Background="#FFB9B2B2">
-        <UserControl>
-            <UserControls:VideoPlayer x:Name="videoplayer"  HorizontalAlignment="Left" Margin="19,0,0,40" VerticalAlignment="Bottom" Height="88" Width="453"/>
-        </UserControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="419*"/>
+            <RowDefinition Height="261*"/>
+        </Grid.RowDefinitions>
+        <UserControls:VideoPlayer x:Name="videoplayer"  HorizontalAlignment="Left" Margin="19,0,0,40" VerticalAlignment="Bottom" Height="88" Width="453" Grid.Row="1"/>
+        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="0,1,0,86.2" Width="355"/>
     </Grid>
 </Page>

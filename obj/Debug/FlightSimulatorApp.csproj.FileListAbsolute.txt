@@ -46,3 +46,5 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\Page2.baml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\VideoPlayer.g.cs
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\VideoPlayer.baml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\DataFlight.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\DataFlight.baml
