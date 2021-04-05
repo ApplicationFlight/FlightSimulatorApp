@@ -81,19 +81,6 @@ namespace FlightSimulatorApp.Model {
             this.telnetClient = new TelnetClient();
         }
 
-        /*public int get_overall_time() {
-            //TODO: rember: the value returned is times in milliseconds
-            //TODO: should time be relative to speed or absolute? (like youtube)
-            return timeseries.n_lines * speed;
-        }
-
-        public int relative_time() {
-            //TODO: rember: the value returned is times in milliseconds
-            //TODO: should time be relative to speed or absolute? (like youtube)
-            int lines_left = timeseries.n_lines - this.index;
-            return lines_left * this.speed;
-        }*/
-
         public void connect() {
             this.telnetClient.connect();
         }
@@ -114,8 +101,8 @@ namespace FlightSimulatorApp.Model {
                     if (this.is_running) {
                         Console.WriteLine("INDEX: " + get_index_from_percentage(this.Percentage) + "\n");
                         Console.WriteLine("SPEED: " + this.speed + "\n");
-                        Console.WriteLine(this.timeseries.data[get_index_from_percentage(this.Percentage)]);
-                        output.WriteLine(this.timeseries.data[get_index_from_percentage(this.Percentage)]);
+                        Console.WriteLine(this.timeseries.simple_data[get_index_from_percentage(this.Percentage)]);
+                        output.WriteLine(this.timeseries.simple_data[get_index_from_percentage(this.Percentage)]);
                         this.Percentage = this.Percentage + (100 / (float)this.timeseries.n_lines);
                         Thread.Sleep(this.Speed);
                     }
