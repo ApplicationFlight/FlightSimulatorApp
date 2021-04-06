@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.Generic;
+using OxyPlot;
 
 namespace FlightSimulatorApp.Model  {
 
@@ -26,6 +28,10 @@ namespace FlightSimulatorApp.Model  {
         float Aileron { set; get; }
         float Elevator { set; get; }
         float Rudder { set; get; }
+        //List<DataPoint> Points { set; get; } //TODO: remove this
+        List<DataMember> Data_members { set; get; }
+        DataMember Data_member { set; get; }
+        List<DataPoint> Points { set; get; }
         TimeSeries Timeseries { set; get; }
 
     }

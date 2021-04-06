@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
+using OxyPlot;
 
 namespace FlightSimulatorApp.ViewModel {
     using FlightSimulatorApp.Model;
@@ -18,21 +18,23 @@ namespace FlightSimulatorApp.ViewModel {
         public List<Tuple<string, List<float>>> whole_data;
         public Dictionary<string, List<float>> data_map;
         public List<Tuple<string, List<float>>> selected_data;
+        public List<DataMember> data_members;
         public int n_lines;
         public int n_colums;
 
 
         // contructor
         public TimeSeries(string file_path) {
-            this.simple_data = get_simple_data(file_path);
-            this.whole_data = get_whole_data(file_path);
+            this.simple_data = initialize_simple_data(file_path);
+            this.whole_data = initialize_whole_data(file_path);
             this.n_lines = this.simple_data.Count();
             this.n_colums = this.whole_data.Count();
-            this.selected_data = get_selected_data();
-            this.data_map = get_data_map();
-        }
+            this.selected_data = initialize_selected_data();
+            this.data_map = initialize_data_map();
+            this.data_members = initialize_data_members();
+    }
 
-        List<string> get_simple_data(string file_path) {
+        List<string> initialize_simple_data(string file_path) {
             List<string> result = new List<string>();
             StreamReader input = new StreamReader(file_path);
             string line;
@@ -43,7 +45,7 @@ namespace FlightSimulatorApp.ViewModel {
             return result; 
         }
 
-        List<Tuple<string, List<float>>> get_whole_data(string file_path) {
+        List<Tuple<string, List<float>>> initialize_whole_data(string file_path) {
             List<Tuple<string, List<float>>> result = new List<Tuple<string, List<float>>>();
             //Console.WriteLine("HERE\n");
             // getting titles from xml:
@@ -63,18 +65,10 @@ namespace FlightSimulatorApp.ViewModel {
                     result[i++].Item2.Add(float.Parse(word, CultureInfo.InvariantCulture.NumberFormat));
                 }
             }
-            /*StreamWriter output = new StreamWriter("..\\..\\Model\\output.csv");
-            for (int i = 0; i<result[0].Item2.Count(); i++) {
-                for (int j= 0; j<result.Count(); j++) {
-                    output.Write(result[j].Item2[i].ToString());
-                    output.Write(',');
-                }
-                output.WriteLine();
-            }*/
             csvDoc.Close();
             return result;
         }
-        List<Tuple<string, List<float>>> get_selected_data() {
+        List<Tuple<string, List<float>>> initialize_selected_data() {
             List<Tuple<string, List<float>>> result = new List<Tuple<string, List<float>>>();
             for (int i =0; i<this.n_colums; i++) {
                 string l = this.whole_data[i].Item1;
@@ -87,7 +81,7 @@ namespace FlightSimulatorApp.ViewModel {
             return result; 
         }
 
-        Dictionary<string, List<float>> get_data_map() {
+        Dictionary<string, List<float>> initialize_data_map() {
             Dictionary<string, List<float>> result = new Dictionary<string, List<float>>();
             for (int i = 0; i < this.n_colums; i++) {
                 if (!result.ContainsKey(this.whole_data[i].Item1)) {
@@ -95,6 +89,20 @@ namespace FlightSimulatorApp.ViewModel {
                 }
             }
             return result; 
+        }
+
+        List<DataMember> initialize_data_members() {
+            List<DataMember> result = new List<DataMember>();
+            for (int i = 0; i<this.whole_data.Count(); i++) {
+                DataMember current = new DataMember();
+                current.Name = whole_data[i].Item1;
+                List<DataPoint> points = new List<DataPoint>();
+                points.Add(new DataPoint(0, whole_data[i].Item2[0]));
+                current.Points = points;
+                // TODO: find most correlative
+                result.Add(current);
+            }
+            return result;
         }
     }
 }

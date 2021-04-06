@@ -13,6 +13,8 @@ using System.Threading;
 namespace FlightSimulatorApp.Model {
 
     using FlightSimulatorApp.ViewModel;
+    using System.Collections.Generic;
+    using OxyPlot;
 
     public class ModelCSV : IModelCSV {
 
@@ -66,16 +68,13 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        // slider
         private float throttle;
         public float Throttle { 
             set {
                 this.throttle = value;
                 NotifyPropertyChanged("Throttle");
             }
-            get {
-                return this.throttle;
-            }
+            get {return this.throttle;}
         }
         private float aileron;
 
@@ -84,9 +83,7 @@ namespace FlightSimulatorApp.Model {
                 this.aileron = value;
                 NotifyPropertyChanged("Aileron");
             } 
-            get {
-                return this.aileron;
-            }
+            get { return this.aileron;}
         }
         private float elevator { set; get; }
         public float Elevator { 
@@ -99,19 +96,52 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        // slider
         private float rudder;
         public float Rudder {
             set {
                 this.rudder = value;
                 NotifyPropertyChanged("Rudder");
             }
+            get {return this.rudder;}
+        }
+
+      
+
+        private List<DataMember> data_members;
+        public List<DataMember> Data_members {
+            set {
+                this.data_members = value;
+                NotifyPropertyChanged("Data_members");
+            }
             get {
-                return this.rudder;
+                return this.data_members;
             }
         }
 
-       
+
+        private DataMember data_member;
+        public DataMember Data_member {
+            set {
+                this.data_member = value;
+               
+            }
+            get {
+                return this.data_member;
+            }
+        }
+
+
+        private List<DataPoint> points = new List<DataPoint>();
+        public List<DataPoint> Points {
+            get {
+                return this.points;
+            }
+            set {
+                this.points = value;
+                NotifyPropertyChanged("Points");           
+            }
+        }
+
 
         // methods
         public ModelCSV() {
@@ -145,6 +175,31 @@ namespace FlightSimulatorApp.Model {
             this.Elevator = this.timeseries.data_map["elevator"][i];
         }
 
+        private double l = 200;
+        void update_data_members(int j) {
+            
+            // updating current data member
+            int index = 0; 
+
+            List<DataMember> result = Data_members;
+            List<DataPoint> result_points = new List<DataPoint>();
+            for (int i =0; i<this.Data_members.Count(); i++ ) {
+                /* adding a new point in which the X is the time (the index j)
+                and the Y is the "jth" element on the column of the data member with this name*/
+                result[i].Points.Add(new DataPoint((double)j*(l/(double)timeseries.n_lines), timeseries.data_map[Data_members[i].Name][j]));
+                Data_members[i].Points = result[i].Points;
+                if (this.Data_member != null) {
+                    if (Data_members[i].Name.Equals(this.Data_member.Name)) {
+                        Console.WriteLine("enetered IF, the name is: " + this.Data_member.Name);
+                        index = i; 
+                    }
+                }
+            }
+            Console.WriteLine("the index is: " + index);
+            this.Points = result[index].Points; 
+        }
+
+
         public void start() {
             // TODO: maybe the getstream could be included with the connect of client? 
             new Thread(delegate () {
@@ -152,13 +207,14 @@ namespace FlightSimulatorApp.Model {
                 while (get_index_from_percentage(this.Percentage) < this.timeseries.n_lines) {
                     if (this.is_running) {
                         int i = get_index_from_percentage(this.Percentage);
-                        Console.WriteLine("INDEX: " + i + "\n");
-                        Console.WriteLine("SPEED: " + this.speed + "\n");
-                        Console.WriteLine(this.timeseries.simple_data[i]);
+                        //Console.WriteLine("INDEX: " + i + "\n");
+                        //Console.WriteLine("SPEED: " + this.speed + "\n");
+                        //Console.WriteLine(this.timeseries.simple_data[i]);
                         output.WriteLine(this.timeseries.simple_data[i]);
                         this.Percentage = this.Percentage + (100 / (float)this.timeseries.n_lines);
                         update_selected_data(i);
                         update_joystick_value(i);
+                        update_data_members(i); 
                         Thread.Sleep(this.Speed);
                     }
                 }
@@ -168,14 +224,15 @@ namespace FlightSimulatorApp.Model {
 
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
-                Console.WriteLine("HERE IN PROPERTY CHANGED FOR "+ name+"\n");
+                //Console.WriteLine("HERE IN PROPERTY CHANGED FOR "+ name+"\n");
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
 
         public void setFile(string file_path) {
             this.timeseries = new TimeSeries(file_path);
-            //VM_overall_time = get_time_from_seconds(this.timeseries.n_lines / 10);
+            this.Data_members = this.timeseries.data_members;
+
             connect();
             start();
             // TODO: think about where disconnect
