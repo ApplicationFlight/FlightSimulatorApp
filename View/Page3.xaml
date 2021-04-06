@@ -10,8 +10,14 @@
       Title="Page3">
 
     <Grid Background="Gray">
+<<<<<<< HEAD
         <ListView Margin="10,10,0,0" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
         <oxy:Plot Name="Graph" Title="aileron" Margin="219,10,126,0" Background="White" Height="234" VerticalAlignment="Top">
+=======
+        <ListView Margin="10,10,0,10" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="166" SelectionChanged="List_SelectionChanged"/>
+
+        <oxy:Plot Title="Graph" Width="200" Height="200" Margin="192,12,208,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+>>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints" ItemsSource="{Binding VM_Points}"/>
             </oxy:Plot.Series>

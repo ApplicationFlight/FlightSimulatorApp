@@ -175,17 +175,41 @@ namespace FlightSimulatorApp.Model {
             this.Elevator = this.timeseries.data_map["elevator"][i];
         }
 
+<<<<<<< HEAD
         void update_data_members(int j) {
             int index = 0; 
             for (int i = 0; i < this.Data_members.Count(); i++) {
                 Data_members[i].Points.Add(new DataPoint((double)j/10, timeseries.data_map[Data_members[i].Name][j]));
                 if (this.Data_member != null) {
                     if (Data_members[i].Name.Equals(this.Data_member.Name)) {
+=======
+        private double l = 200;
+        void update_data_members(int j) {
+            
+            // updating current data member
+            int index = 0; 
+
+            List<DataMember> result = Data_members;
+            List<DataPoint> result_points = new List<DataPoint>();
+            for (int i =0; i<this.Data_members.Count(); i++ ) {
+                /* adding a new point in which the X is the time (the index j)
+                and the Y is the "jth" element on the column of the data member with this name*/
+                result[i].Points.Add(new DataPoint((double)j*(l/(double)timeseries.n_lines), timeseries.data_map[Data_members[i].Name][j]));
+                Data_members[i].Points = result[i].Points;
+                if (this.Data_member != null) {
+                    if (Data_members[i].Name.Equals(this.Data_member.Name)) {
+                        Console.WriteLine("enetered IF, the name is: " + this.Data_member.Name);
+>>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
                         index = i; 
                     }
                 }
             }
+<<<<<<< HEAD
             this.Points = Data_members[index].Points; 
+=======
+            Console.WriteLine("the index is: " + index);
+            this.Points = result[index].Points; 
+>>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
         }
 
 
