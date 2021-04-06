@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
         Title="Flight Simulator" Height="600" Width="600">
-	<Grid Background="#FFB9B2B2">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
-		<Button x:Name="UploadCVSButton" Content="Upload CSV file" HorizontalAlignment="Left" Margin="530,472,0,0" VerticalAlignment="Top" Width="186" Click="UploadCVSButton_Click" Height="71" FontSize="20"/>
-		<TextBlock TextWrapping="Wrap" Text="Welcome to Flight Simulator" VerticalAlignment="Center" Margin="367,258,377,241" Height="152" Width="500" FontSize="48" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Microsoft YaHei UI"/>
-		<Button x:Name="ContinueButton" Content="Continue" HorizontalAlignment="Left" Margin="1071,543,0,0" VerticalAlignment="Top" Width="146" FontSize="20" Height="46" Click="Continue_Click"/>
-		<Frame x:Name="main_f" />
-	</Grid>
+    <Grid Background="#FFB9B2B2" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="603">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="UploadCVSButton" Content="Upload CSV file" HorizontalAlignment="Left" Margin="198,253,0,0" VerticalAlignment="Top" Width="186" Click="UploadCVSButton_Click" Height="71" FontSize="20" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment"/>
+        <TextBlock TextWrapping="Wrap" Text="Welcome to Flight Simulator" VerticalAlignment="Top" Margin="24,60,0,0" Height="152" Width="500" FontSize="48" HorizontalAlignment="Left" TextAlignment="Center" FontFamily="Microsoft YaHei UI"/>
+        <Button x:Name="ContinueButton" Content="Continue" HorizontalAlignment="Left" Margin="370,391,0,0" VerticalAlignment="Top" Width="146" FontSize="20" Height="46" Click="Continue_Click" d:LayoutOverrides="HorizontalAlignment"/>
+        <Frame x:Name="main_f"  Margin="-6,-4,0,9" HorizontalAlignment="Left" Width="600" d:LayoutOverrides="TopMargin, BottomMargin" />
+    </Grid>
 </Window>

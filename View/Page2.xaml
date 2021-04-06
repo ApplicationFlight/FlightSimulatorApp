@@ -15,8 +15,17 @@
             <RowDefinition/>
             <RowDefinition Height="230.4"/>
         </Grid.RowDefinitions>
-        <UserControls:VideoPlayer x:Name="videoplayer"  HorizontalAlignment="Left" Margin="19,0,0,40" VerticalAlignment="Bottom" Height="88" Width="453" Grid.Row="1"/>
-        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="0,1,0,61.6" Width="283" d:LayoutOverrides="HorizontalAlignment"/>
-        <UserControls:Joystick x:Name="joystick"  HorizontalAlignment="Left" Margin="363,1,0,122.6" Width="211" />
+        <UserControls:VideoPlayer x:Name="videoplayer"  HorizontalAlignment="Left" Margin="-5,0,0,-2" VerticalAlignment="Bottom" Height="88" Width="602" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
+        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="0,1,0,89" Width="266" d:LayoutOverrides="HorizontalAlignment" Grid.RowSpan="2" Loaded="dataflight_Loaded"/>
+        <UserControls:Joystick x:Name="joystick"  HorizontalAlignment="Left" Margin="346,0,0,67.6" Width="227" RenderTransformOrigin="0.5,0.5" >
+            <UserControls:Joystick.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.364"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UserControls:Joystick.RenderTransform>
+        </UserControls:Joystick>
     </Grid>
 </Page>

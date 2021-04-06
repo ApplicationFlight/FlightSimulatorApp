@@ -50,3 +50,10 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\D
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\DataFlight.baml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\Joystick.g.cs
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\UserControls\Joystick.baml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\Page3.g.cs
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\View\Page3.baml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\OxyPlot.dll
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\OxyPlot.Wpf.dll
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\OxyPlot.xml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\Debug\OxyPlot.Wpf.xml
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\Debug\FlightSimulatorApp.csproj.CopyComplete

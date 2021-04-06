@@ -4,29 +4,59 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
-      mc:Ignorable="d" Height="88.3" Width="453.2">
-    <Grid x:Name="text" Background="#FFB9B2B2" Margin="0,3,-0.2,-1" Height="86" VerticalAlignment="Top">
+      mc:Ignorable="d" Height="88" Width="600">
+    <Grid x:Name="text" Background="#FFC2D3CB" Height="61" VerticalAlignment="Top" Margin="6,27,-6,0">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Play" Content="Play"  HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Width="145" Click="Play_Click" Height="30" FontSize="18" d:LayoutOverrides="VerticalAlignment"/>
-        <Button x:Name="Pause" Content="Pause" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" Width="145" Click="Pause_Click" Height="30" FontSize="18" d:LayoutOverrides="VerticalAlignment"/>
-        <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="99,52,90,0" VerticalAlignment="Top" Height="23" Maximum="100" Minimum="0" TickFrequency="1" d:LayoutOverrides="HorizontalAlignment" />
+        <Button x:Name="Play"  HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="36" Click="Play_Click" Height="27" FontSize="18">
+            <Button.Background>
+                <ImageBrush ImageSource="play.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Pause" HorizontalAlignment="Right" Margin="0,34,320.6,0" VerticalAlignment="Top" Width="33" Click="Pause_Click" Height="27" FontSize="18" RenderTransformOrigin="-1.091,0.556">
+            <Button.Background>
+                <ImageBrush ImageSource="pause.jpg"/>
+            </Button.Background>
+        </Button>
+        <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="10,13,10,15" Maximum="100" Minimum="0" TickFrequency="1" Grid.ColumnSpan="2" d:LayoutOverrides="TopMargin, BottomMargin" />
         <!-- Button Content="Speed" HorizontalAlignment="Left" Margin="331,562,0,0" VerticalAlignment="Top" Width="145" Height="30" FontSize="18"/-->
-        <ComboBox x:Name="Speed"  HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="109" Height="30" FontSize="18" SelectionChanged="Speed_SelectionChanged" RenderTransformOrigin="0.864,-2.542" d:LayoutOverrides="VerticalAlignment">
+        <ComboBox x:Name="Speed"  HorizontalAlignment="Left" Margin="-16.6,34,0,0" VerticalAlignment="Top" Width="61" Height="27" FontSize="18" SelectionChanged="Speed_SelectionChanged" RenderTransformOrigin="0.864,-2.542" Background="Black" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment">
             <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,0.2,0" Width="107"/>
             <ComboBoxItem x:Name="_10_Speed" IsSelected="True" Content="x1.0"/>
             <ComboBoxItem x:Name="_15_Speed" Content="x1.5"/>
         </ComboBox>
-        <TextBlock x:Name="Overall_Time" HorizontalAlignment="Right" Margin="0,48,357,0" TextWrapping="Wrap" Text="{Binding VM_Relative_time}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="28" Width="87" FontSize="20" d:LayoutOverrides="LeftMargin, RightMargin">
-            <TextBlock.RenderTransform>
+        <TextBox x:Name="Relative_Time" Height="27" Margin="45.4,0,1,0" VerticalAlignment="Bottom" FontSize="20" TextChanged="Relative_Time_TextChanged" Background="#FFEFF5F4" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
+        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="42.4,36,86,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" >
+            <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="719.45"/>
-                    <TranslateTransform/>
+                    <RotateTransform Angle="0.074"/>
+                    <TranslateTransform X="0.264" Y="-0.014"/>
                 </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock x:Name="Relative_Time" HorizontalAlignment="Right" Margin="0,48,-3,0" TextWrapping="Wrap" Text="{Binding VM_Overall_time}" VerticalAlignment="Top" Height="28" Width="82" FontSize="20" d:LayoutOverrides="LeftMargin, RightMargin"/>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="130.4,36,4,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.074"/>
+                    <TranslateTransform X="0.264" Y="-0.014"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="/" HorizontalContentAlignment="Center" Margin="115.4,36,75,2" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.074"/>
+                    <TranslateTransform X="0.264" Y="-0.014"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
     </Grid>
 </UserControl>
