@@ -30,7 +30,8 @@ namespace FlightSimulatorApp.ViewModel {
         }
         public float VM_Aileron {
             get {
-                return modelCSV.Aileron;
+                // return modelCSV.Aileron;
+                return (modelCSV.Aileron + 1) * 18;
             }
             set {
                 modelCSV.Aileron = value;
@@ -38,13 +39,12 @@ namespace FlightSimulatorApp.ViewModel {
         }
         public float VM_Elevator {
             get {
-                return modelCSV.Elevator;
+                return 18 * (1 - modelCSV.Elevator);
             }
             set {
                 modelCSV.Elevator = value;
             }
         }
-
         public float VM_Rudder {
             get {
                 return modelCSV.Rudder;

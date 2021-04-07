@@ -22,18 +22,6 @@ namespace FlightSimulatorApp.ViewModel {
             };
         }
 
-<<<<<<< HEAD
-        
-=======
-        public void NotifyPropertyChanged(string name) {
-            if (this.PropertyChanged != null) {
-                //Console.WriteLine("(NOTIFY) data was changed!!!!!!!!!!!!!!!!!!!!!!\n");
-                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-
-            }
-        }
->>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
-
         public List<DataMember> VM_Data_members {
             get {
                 return modelCSV.Data_members;
@@ -50,23 +38,15 @@ namespace FlightSimulatorApp.ViewModel {
                 return this.modelCSV.Points;
             }
             set {
-<<<<<<< HEAD
-=======
-                //Console.WriteLine("WE CHANGED POINTS IN VIEWMODEL");
->>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
                 this.modelCSV.Points = value; 
             }
         }
 
-<<<<<<< HEAD
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-
-=======
->>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
     }
 }
 

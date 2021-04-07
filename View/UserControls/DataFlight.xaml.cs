@@ -32,6 +32,6 @@ namespace FlightSimulatorApp.View.UserControls {
         }
         public DataFlight() {
             InitializeComponent();
-        }  
+        }
     }
 }

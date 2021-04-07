@@ -36,11 +36,8 @@ namespace FlightSimulatorApp {
             bool? response = fileDialog.ShowDialog();
             if (response == true) {
                 this.model.setFile(fileDialog.FileName);
-<<<<<<< HEAD
-                main_f.Content = new Page3(this.model); //path of the CSV file
-=======
-                main_f.Content = new Page3(this.model);//path of the CSV file
->>>>>>> 412fea775eb6bff312a4370332fc532dffbaa47c
+                Page2 page = new Page2(model);
+                this.Content = page; 
             }
         }
 

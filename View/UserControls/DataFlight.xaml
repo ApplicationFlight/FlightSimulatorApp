@@ -7,10 +7,25 @@
              mc:Ignorable="d" Height="332.167" Width="355.079"
             
              >
-    <Grid Margin="0,-1,-7.8,-16" Background="Gray" RenderTransformOrigin="0.353,0.447">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBox" HorizontalAlignment="Right" Margin="0,5,-253.2,24" Width="201" ItemsSource="{Binding VM_Selected_data}"/>
+    <Grid Margin="0,-1,-0.8,-9" RenderTransformOrigin="0.353,0.447" Background="#FFB9B2B2">
+        <Border BorderBrush="Black" BorderThickness="1" Height="51" Margin="62,24,64,0" VerticalAlignment="Top">
+            <Border.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF8598BD" Offset="0.722"/>
+                    <GradientStop Color="#FF4A6396" Offset="0.13"/>
+                </RadialGradientBrush>
+            </Border.Background>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" FontSize="30" Margin="0.2,2.2,-1.2,1.4" Foreground="White"><Run Text="Data Dashbo"/><Run Text="ard"/></TextBlock>
+        </Border>
+        <Grid Margin="25,95,18,25" RenderTransformOrigin="0.377,0.515" d:LayoutOverrides="TopMargin, BottomMargin">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*" />
+                <ColumnDefinition Width="92.8"/>
+                <ColumnDefinition Width="19*" />
+                <ColumnDefinition Width="17*" />
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="listBox" Grid.Column="2" ItemsSource="{Binding VM_Selected_data}" FontSize="20" Margin="0.2,-1,2.2,0.6" d:LayoutOverrides="TopMargin, BottomMargin"/>
+            <TextBlock x:Name="textBlock1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,-14.2,-4.4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom"/>
+        </Grid>
     </Grid>
 </UserControl>
