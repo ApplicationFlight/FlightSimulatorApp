@@ -6,15 +6,20 @@
       xmlns:local="clr-namespace:FlightSimulatorApp.View"
       xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="600"
-      Title="Page3">
+      d:DesignHeight="600"
+      Title="Page3" Width="816">
 
-    <Grid Background="Gray">
+    <Grid Background="Gray" Margin="0,0,-3,0">
 
         <ListView Margin="10,10,0,0" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
-        <oxy:Plot Name="Graph" Title="aileron" Margin="219,10,126,0" Background="White" Height="234" VerticalAlignment="Top">
+        <oxy:Plot Name="Graph" Title="aileron" Margin="258,6,311,0" Background="White" Height="234" Width ="250" VerticalAlignment="Top">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints" ItemsSource="{Binding VM_Points}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+        <oxy:Plot Name="Graph_Correlative" Title="" Margin="0,8,24,0" Background="White" Height="234" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247" d:LayoutOverrides="HorizontalAlignment">
+            <oxy:Plot.Series>
+                <oxy:LineSeries Name="GraphPoints_Correlative" ItemsSource="{Binding VM_Correlative_points}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
     </Grid>

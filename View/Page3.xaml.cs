@@ -34,11 +34,14 @@ namespace FlightSimulatorApp.View {
 
         private void dispatcherTimer_Tick(object sender, EventArgs e) {
             Graph.InvalidatePlot(true);
+            Graph_Correlative.InvalidatePlot(true);
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             DataMember selected = (DataMember)((ListView)sender).SelectedItem;
             Graph.Title = selected.Name;
+            Graph_Correlative.Title = selected.Correlative;
+            //Graph_Correlative.Title = selected.Correlative.Name; 
             viewmodel.modelCSV.Data_member = selected;
         }
     }

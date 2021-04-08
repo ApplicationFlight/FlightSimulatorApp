@@ -65,12 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AnomalyDetector\AnomalyDetectionUtil.cs" />
+    <Compile Include="Model\AnomalyDetector\SimpleAnomalyDetector.cs" />
+    <Compile Include="Model\AnomalyDetector\TimeSeries.cs" />
     <Compile Include="Model\DataMember.cs" />
+    <Compile Include="Model\AnomalyDetector\Line.cs" />
     <Compile Include="Model\IModelCSV.cs" />
     <Compile Include="Model\ItelnetClient.cs" />
     <Compile Include="Model\Point.cs" />
     <Compile Include="Model\TelnetClient.cs" />
-    <Compile Include="Model\TimeSeries.cs" />
+    <Compile Include="Model\ModelDataBase.cs" />
     <Compile Include="ViewModel\DataFlightViewModel.cs" />
     <Compile Include="ViewModel\JoystickViewModel.cs" />
     <Compile Include="ViewModel\Page3ViewModel.cs" />
@@ -157,5 +161,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

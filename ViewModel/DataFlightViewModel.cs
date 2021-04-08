@@ -30,7 +30,7 @@ namespace FlightSimulatorApp.ViewModel {
 
         //public float[] check = { 1, 2, 3, 4, 5, 6 };
 
-        public float[] VM_Selected_data {
+        public double[] VM_Selected_data {
             get {
                 return modelCSV.Selected_data;
             }

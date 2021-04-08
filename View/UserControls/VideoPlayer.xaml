@@ -8,15 +8,10 @@
     <Grid x:Name="text" Background="#FFC2D3CB" Height="61" VerticalAlignment="Top" Margin="-1,1,1.2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="294*"/>
-            <ColumnDefinition Width="93*"/>
             <ColumnDefinition Width="208*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Play"  HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="36" Click="Play_Click" Height="27" FontSize="18">
-
-        </Button>
-        <Button x:Name="Pause" HorizontalAlignment="Right" Margin="0,34,224.4,0" VerticalAlignment="Top" Width="36" Click="Pause_Click" Height="27" FontSize="18" RenderTransformOrigin="-1.091,0.556">
-
-        </Button>
+        <Button x:Name="Play"  HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="36" Click="Play_Click" Height="27" FontSize="18"/>
+        <Button x:Name="Pause" HorizontalAlignment="Right" Margin="0,34,275.8,0" VerticalAlignment="Top" Width="36" Click="Pause_Click" Height="27" FontSize="18" RenderTransformOrigin="-1.091,0.556"/>
         <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="10,13,10.2,15" Maximum="100" Minimum="0" TickFrequency="1" Grid.ColumnSpan="3" d:LayoutOverrides="TopMargin, BottomMargin" />
         <!-- Button Content="Speed" HorizontalAlignment="Left" Margin="331,562,0,0" VerticalAlignment="Top" Width="145" Height="30" FontSize="18"/-->
         <ComboBox x:Name="Speed"  HorizontalAlignment="Left" Margin="-19.2,35,0,-1" VerticalAlignment="Top" Width="61" Height="27" FontSize="18" SelectionChanged="Speed_SelectionChanged" RenderTransformOrigin="0.864,-2.542" Background="Black" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment">
@@ -25,35 +20,8 @@
             <ComboBoxItem x:Name="_15_Speed" Content="x1.5"/>
         </ComboBox>
         <TextBox x:Name="Relative_Time" Height="27" Margin="45.8,0,0.2,0" VerticalAlignment="Bottom" FontSize="20" Background="#FFEFF5F4" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
-        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="40.8,36,88.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" >
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.074"/>
-                    <TranslateTransform X="0.264" Y="-0.014"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="130.8,36,1.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin" >
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.074"/>
-                    <TranslateTransform X="0.264" Y="-0.014"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="/" HorizontalContentAlignment="Center" Margin="115.8,36,75.2,2" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin" >
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.074"/>
-                    <TranslateTransform X="0.264" Y="-0.014"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
+        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="40.8,36,88.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
+        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="130.8,36,1.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin"/>
+        <Label Content="/" HorizontalContentAlignment="Center" Margin="0,36,94.2,2" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Right" Width="20"/>
     </Grid>
 </UserControl>

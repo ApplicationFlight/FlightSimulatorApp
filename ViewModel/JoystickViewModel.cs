@@ -20,7 +20,7 @@ namespace FlightSimulatorApp.ViewModel {
             };
         }
 
-        public float VM_Throttle {
+        public double VM_Throttle {
             get {
                 return modelCSV.Throttle;
             }
@@ -28,7 +28,7 @@ namespace FlightSimulatorApp.ViewModel {
                 modelCSV.Throttle = value;
             }
         }
-        public float VM_Aileron {
+        public double VM_Aileron {
             get {
                 // return modelCSV.Aileron;
                 return (modelCSV.Aileron + 1) * 18;
@@ -37,7 +37,7 @@ namespace FlightSimulatorApp.ViewModel {
                 modelCSV.Aileron = value;
             }
         }
-        public float VM_Elevator {
+        public double VM_Elevator {
             get {
                 return 18 * (1 - modelCSV.Elevator);
             }
@@ -45,7 +45,7 @@ namespace FlightSimulatorApp.ViewModel {
                 modelCSV.Elevator = value;
             }
         }
-        public float VM_Rudder {
+        public double VM_Rudder {
             get {
                 return modelCSV.Rudder;
             }

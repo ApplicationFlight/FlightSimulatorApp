@@ -35,8 +35,8 @@ namespace FlightSimulatorApp {
             OpenFileDialog fileDialog = new OpenFileDialog();
             bool? response = fileDialog.ShowDialog();
             if (response == true) {
-                this.model.setFile(fileDialog.FileName);
-                Page2 page = new Page2(model);
+                this.model.initialize_model(fileDialog.FileName);
+                Page3 page = new Page3(model);
                 this.Content = page; 
             }
         }

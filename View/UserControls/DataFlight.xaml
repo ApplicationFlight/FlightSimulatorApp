@@ -4,28 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls" xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DataFlightViewModel}"
-             mc:Ignorable="d" Height="332.167" Width="355.079"
+             mc:Ignorable="d" Height="328.745" Width="315.161"
             
              >
-    <Grid Margin="0,-1,-0.8,-9" RenderTransformOrigin="0.353,0.447" Background="#FFB9B2B2">
-        <Border BorderBrush="Black" BorderThickness="1" Height="51" Margin="62,24,64,0" VerticalAlignment="Top">
+    <Grid Margin="0,-1,3,-9.2" RenderTransformOrigin="0.353,0.447" Background="#FFB9B2B2">
+        <Border BorderBrush="Black" BorderThickness="1" Height="57" Margin="10,6,45.2,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.176"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
             <Border.Background>
                 <RadialGradientBrush>
-                    <GradientStop Color="#FF8598BD" Offset="0.722"/>
-                    <GradientStop Color="#FF4A6396" Offset="0.13"/>
+                    <GradientStop Color="#FF2C2A2A" Offset="1" />
+                    <GradientStop Color="#FF79A69A" />
                 </RadialGradientBrush>
             </Border.Background>
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" FontSize="30" Margin="0.2,2.2,-1.2,1.4" Foreground="White"><Run Text="Data Dashbo"/><Run Text="ard"/></TextBlock>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" FontSize="30" Margin="20.2,5.2,14,10" Foreground="White"><Run Text="Data Dashbo"/><Run Text="ard"/></TextBlock>
         </Border>
-        <Grid Margin="25,95,18,25" RenderTransformOrigin="0.377,0.515" d:LayoutOverrides="TopMargin, BottomMargin">
+        <Grid Margin="1,79,12,39" RenderTransformOrigin="0.377,0.515" d:LayoutOverrides="LeftMargin, RightMargin">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*" />
-                <ColumnDefinition Width="92.8"/>
-                <ColumnDefinition Width="19*" />
-                <ColumnDefinition Width="17*" />
+                <ColumnDefinition Width="17.931"/>
+                <ColumnDefinition Width="74.869"/>
+                <ColumnDefinition Width="61*" />
+                <ColumnDefinition Width="49*" />
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="listBox" Grid.Column="2" ItemsSource="{Binding VM_Selected_data}" FontSize="20" Margin="0.2,-1,2.2,0.6" d:LayoutOverrides="TopMargin, BottomMargin"/>
-            <TextBlock x:Name="textBlock1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,-14.2,-4.4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom"/>
+            <TextBlock Margin="3,0,-0.2,11.6" TextWrapping="Wrap" Text="Airspeed" VerticalAlignment="Bottom" Height="33" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.ColumnSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <TextBlock Margin="34,3,15,0" TextWrapping="Wrap" Height="22" Text="ft" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin"/>
+
+            <TextBlock Margin="1,0,1.8,47.6" TextWrapping="Wrap" Text="Side-Splip" VerticalAlignment="Bottom" Height="33" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.ColumnSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <TextBlock Margin="34.8,29,13.8,0" TextWrapping="Wrap" Height="22" Text="deg" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin"/>
+
+            <TextBlock Margin="3,-2,-0.2,0" TextWrapping="Wrap" Text="Altitude" VerticalAlignment="Top" Height="33" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Column="1" Grid.ColumnSpan="2" />
+            <TextBlock Margin="34.8,63,13.8,0" TextWrapping="Wrap" Height="22" Text="deg" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin"/>
+
+            <TextBlock Margin="2,26,0.8,0" TextWrapping="Wrap" Text="Roll" VerticalAlignment="Top" Height="33" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Column="1" Grid.ColumnSpan="2" />
+            <TextBlock Margin="34.8,103,13.8,93.6" TextWrapping="Wrap" Text="deg" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="TopMargin, BottomMargin"/>
+
+            <TextBlock Margin="1,61,1.8,0" TextWrapping="Wrap" Text="Pitch" VerticalAlignment="Top" Height="33" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <TextBlock Margin="34.8,0,13.8,54.6" TextWrapping="Wrap" Height="23" Text="deg" VerticalAlignment="Bottom" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="TopMargin, BottomMargin"/>
+
+            <TextBlock Margin="2,101,0.8,84.6" TextWrapping="Wrap" Text="Heading" FontSize="17" FontFamily="Segoe UI Black" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <TextBlock Margin="34.8,0,13.8,18.6" TextWrapping="Wrap" Height="23" Text="kt" VerticalAlignment="Bottom" FontSize="17" FontFamily="Segoe UI Black" TextAlignment="Center" Grid.Column="4" d:LayoutOverrides="TopMargin, BottomMargin"/>
+            <ListBox x:Name="listBox" Grid.Column="3" ItemsSource="{Binding VM_Selected_data}" FontSize="20" Margin="1.2,-2,-1,11.2"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -33,5 +33,9 @@ namespace FlightSimulatorApp.View {
             joystick.VM = new JoystickViewModel(this.model);
 
         }
+
+        private void joystick_Loaded(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

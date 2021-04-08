@@ -9,19 +9,15 @@
       Title="Page2" Height="600" Width="600">
     <Grid Background="#FFB9B2B2" Margin="0,0,0,0" Height="600">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="147*"/>
-            <ColumnDefinition Width="132*"/>
-            <ColumnDefinition Width="272*"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="230.4"/>
         </Grid.RowDefinitions>
-        <UserControls:VideoPlayer x:Name="videoplayer" Margin="-0.2,0,3.4,-1" VerticalAlignment="Bottom" Height="69" Width="600" Grid.Row="1" Grid.ColumnSpan="4" d:LayoutOverrides="VerticalAlignment" Grid.Column="1"/>
-        <UserControls:DataFlight x:Name="dataflight"  HorizontalAlignment="Left" Margin="-4,27,-27.758,4.6" Width="361" Grid.ColumnSpan="4"/>
-        <UserControls:Joystick x:Name="joystick"  HorizontalAlignment="Left" Margin="18.4,0,0,67.2" Width="227" RenderTransformOrigin="0.5,0.5" Grid.Column="4" >
-        </UserControls:Joystick>
+        <UserControls:VideoPlayer x:Name="videoplayer" Margin="4,0,0,41" VerticalAlignment="Bottom" Height="69" Grid.Row="1" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.ColumnSpan="2"/>
+        <UserControls:DataFlight x:Name="dataflight" Margin="0,1,20.2,39.6"/>
+        <UserControls:Joystick x:Name="joystick" Margin="39.8,10,14,120.6" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Loaded="joystick_Loaded" />
     </Grid>
 </Page>

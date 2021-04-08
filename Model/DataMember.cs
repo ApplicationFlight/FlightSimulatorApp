@@ -37,10 +37,10 @@ namespace FlightSimulatorApp.Model {
         }
 
         // the most correlative data member
-        private DataMember correlative;
+        private string correlative;
 
 
-        public DataMember Correlative {
+        public string Correlative {
             set {
                 this.correlative = value;
             }

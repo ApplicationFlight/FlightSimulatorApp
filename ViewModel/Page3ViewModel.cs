@@ -28,7 +28,6 @@ namespace FlightSimulatorApp.ViewModel {
             }
             set {
                 modelCSV.Data_members = value;
-
             }
         }
 
@@ -41,6 +40,18 @@ namespace FlightSimulatorApp.ViewModel {
                 this.modelCSV.Points = value; 
             }
         }
+
+        private List<DataPoint> VM_correlative_points = new List<DataPoint>(); 
+        public List<DataPoint> VM_Correlative_points {
+            set {
+                this.modelCSV.Correlative_points = value; 
+            }
+            get {
+                return this.modelCSV.Correlative_points;
+            }
+        }
+
+        
 
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {

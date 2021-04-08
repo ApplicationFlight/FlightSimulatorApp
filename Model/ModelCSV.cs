@@ -22,14 +22,12 @@ namespace FlightSimulatorApp.Model {
         // fields
         ItelnetClient telnetClient;
         public event PropertyChangedEventHandler PropertyChanged;
-        private TimeSeries timeseries;
-        public TimeSeries Timeseries {
-            set {timeseries = value;}
-            get {return timeseries;}
-        }
+        private ModelDataBase reg_flight;
+        private ModelDataBase anomaly_flight;
+        
 
-        private float percentage = 0; 
-        public float Percentage { 
+        private double percentage = 0; 
+        public double Percentage { 
             get {return percentage; }
             set {
                 this.percentage = value;
@@ -59,8 +57,8 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        private float[] selected_data = new float[6];
-        public float[] Selected_data {
+        private double[] selected_data = new double[6];
+        public double[] Selected_data {
             get { return this.selected_data; }
             set {
                 this.selected_data = value;
@@ -68,25 +66,25 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        private float throttle;
-        public float Throttle { 
+        private double throttle;
+        public double Throttle { 
             set {
                 this.throttle = value;
                 NotifyPropertyChanged("Throttle");
             }
             get {return this.throttle;}
         }
-        private float aileron;
+        private double aileron;
 
-        public float Aileron { 
+        public double Aileron { 
             set {
                 this.aileron = value;
                 NotifyPropertyChanged("Aileron");
             } 
             get { return this.aileron;}
         }
-        private float elevator { set; get; }
-        public float Elevator { 
+        private double elevator { set; get; }
+        public double Elevator { 
             set {
                 this.elevator = value;
                 NotifyPropertyChanged("Elevator");
@@ -96,8 +94,8 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        private float rudder;
-        public float Rudder {
+        private double rudder;
+        public double Rudder {
             set {
                 this.rudder = value;
                 NotifyPropertyChanged("Rudder");
@@ -142,10 +140,51 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
+        private List<DataPoint> correlative_points = new List<DataPoint>();
+        public List<DataPoint> Correlative_points {
+            get {
+                return this.correlative_points;
+            }
+            set {
+                this.correlative_points = value;
+                NotifyPropertyChanged("Correlative_points");
+            }
+        }
+
+        private List<DataPoint> regression_points = new List<DataPoint>();
+        public List<DataPoint> Regression_points {
+            get {
+                return this.regression_points;
+            }
+            set {
+                this.regression_points = value;
+                NotifyPropertyChanged("Regression_points");
+            }
+        }
+
+        private List<DataPoint> line = new List<DataPoint>();
+        public List<DataPoint> Line {
+            get {
+                return this.line;
+            }
+            set {
+                this.line = value;
+                NotifyPropertyChanged("Line");
+            }
+        }
+
 
         // methods
         public ModelCSV() {
             this.telnetClient = new TelnetClient();
+        }
+
+        public void initialize_model(string file_path) {
+            this.anomaly_flight = new ModelDataBase(file_path);
+            this.Data_members = this.anomaly_flight.data_members;
+            connect();
+            start();
+            // TODO: think about where disconnect
         }
 
         public void connect() {
@@ -156,36 +195,46 @@ namespace FlightSimulatorApp.Model {
             this.telnetClient.disconnect();
         }
 
-        int get_index_from_percentage(float percetnage) {
-            return (int)(this.timeseries.n_lines * this.Percentage) / 100;
+        int get_index_from_percentage(double percetnage) {
+            return (int)(this.anomaly_flight.n_lines * this.Percentage) / 100;
         }
 
         void update_selected_data(int j) {
-            float[] result = new float[6];
-            for (int i = 0; i < timeseries.selected_data.Count(); i++) {
-                result[i] = timeseries.selected_data[i].Item2[j];
+            double[] result = new double[6];
+            for (int i = 0; i < anomaly_flight.selected_data.Count(); i++) {
+                result[i] = anomaly_flight.selected_data[i].Item2[j];
             }
             this.Selected_data = result; 
         }
 
         void update_joystick_value(int i) {
-            this.Aileron = this.timeseries.data_map["aileron"][i];
-            this.Throttle = this.timeseries.data_map["throttle"][i];
-            this.Rudder = this.timeseries.data_map["rudder"][i];
-            this.Elevator = this.timeseries.data_map["elevator"][i];
+            this.Aileron = this.anomaly_flight.data_map["aileron"][i];
+            this.Throttle = this.anomaly_flight.data_map["throttle"][i];
+            this.Rudder = this.anomaly_flight.data_map["rudder"][i];
+            this.Elevator = this.anomaly_flight.data_map["elevator"][i];
+        }
+
+        public List<DataPoint> get_points_from_name(string name) {
+            for (int i = 0; i < Data_members.Count; i++) {
+                if (Data_members[i].Name.Equals(name)) {
+                    return Data_members[i].Points;
+                }
+            }
+            return null;
         }
 
         void update_data_members(int j) {
             int index = 0; 
             for (int i =0; i<this.Data_members.Count(); i++ ) {
-                Data_members[i].Points.Add(new DataPoint((double)j/10, timeseries.data_map[Data_members[i].Name][j]));
+                Data_members[i].Points.Add(new DataPoint((double)j/10, anomaly_flight.data_map[Data_members[i].Name][j]));
                 if (this.Data_member != null) {
                     if (Data_members[i].Name.Equals(this.Data_member.Name)) {
                         index = i; 
                     }
                 }
             }
-            this.Points = Data_members[index].Points; 
+            this.Points = Data_members[index].Points;
+            this.Correlative_points = get_points_from_name(Data_members[index].Correlative);
         }
 
 
@@ -193,14 +242,14 @@ namespace FlightSimulatorApp.Model {
             // TODO: maybe the getstream could be included with the connect of client? 
             new Thread(delegate () {
                 StreamWriter output = new StreamWriter(this.telnetClient.Client.GetStream());
-                while (get_index_from_percentage(this.Percentage) < this.timeseries.n_lines) {
+                while (get_index_from_percentage(this.Percentage) < this.anomaly_flight.n_lines) {
                     if (this.is_running) {
                         int i = get_index_from_percentage(this.Percentage);
                         //Console.WriteLine("INDEX: " + i + "\n");
                         //Console.WriteLine("SPEED: " + this.speed + "\n");
                         //Console.WriteLine(this.timeseries.simple_data[i]);
-                        output.WriteLine(this.timeseries.simple_data[i]);
-                        this.Percentage = this.Percentage + (100 / (float)this.timeseries.n_lines);
+                        output.WriteLine(this.anomaly_flight.simple_data[i]);
+                        this.Percentage = this.Percentage + (100 / (double)this.anomaly_flight.n_lines);
                         update_selected_data(i);
                         update_joystick_value(i);
                         update_data_members(i); 
@@ -216,15 +265,6 @@ namespace FlightSimulatorApp.Model {
                 //Console.WriteLine("HERE IN PROPERTY CHANGED FOR "+ name+"\n");
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
-        }
-
-        public void setFile(string file_path) {
-            this.timeseries = new TimeSeries(file_path);
-            this.Data_members = this.timeseries.data_members;
-
-            connect();
-            start();
-            // TODO: think about where disconnect
-        }
+        }   
     }
 }

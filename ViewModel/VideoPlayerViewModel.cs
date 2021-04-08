@@ -21,7 +21,7 @@ namespace FlightSimulatorApp.ViewModel {
             //VM_overall_time = get_time_from_seconds(model.Timeseries.n_lines / 10);
         }
 
-        public float VM_Percentage {
+        public double VM_Percentage {
             get {
                 return modelCSV.Percentage;
             }

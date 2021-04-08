@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
-        Title="Flight Simulator" Height="650" Width="600">
-    <Grid Background="#FFB9B2B2" Margin="-2,20,-4.4,0" Width="600" Height="600">
+        Title="Flight Simulator" Height="650" Width="850">
+    <Grid Background="#FFB9B2B2" Margin="-2,20,-4.4,0" Width="850" Height="700">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="459*"/>
             <ColumnDefinition Width="83*"/>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="21*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="UploadCVSButton" Content="Upload CSV file" Margin="198,253,56.2,246" Click="UploadCVSButton_Click" FontSize="20" d:LayoutOverrides="TopMargin, BottomMargin"/>
+        <Button x:Name="UploadCVSButton" Content="Upload CSV file" Margin="198,259,56.4,344" Click="UploadCVSButton_Click" FontSize="20"/>
         <TextBlock TextWrapping="Wrap" Text="Welcome to Flight Simulator" VerticalAlignment="Top" Margin="24,60,6.4,0" Height="152" FontSize="48" TextAlignment="Center" FontFamily="Microsoft YaHei UI" Grid.ColumnSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
         <Button x:Name="ContinueButton" Content="Continue" Margin="-70.2,0,14.4,133" VerticalAlignment="Bottom" FontSize="20" Height="46" Click="Continue_Click" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin"/>
     </Grid>

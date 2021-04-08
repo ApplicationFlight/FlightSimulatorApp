@@ -19,20 +19,26 @@ namespace FlightSimulatorApp.Model  {
 
 
         // fields
-        float Percentage { set; get; }
+        //vieoplayer
+        double Percentage { set; get; }
         int Speed { set; get; }
         bool Is_running { set; get; }
         int Relative_time { set; get; }
-        float[] Selected_data { set; get; }
-        float Throttle { set; get; }
-        float Aileron { set; get; }
-        float Elevator { set; get; }
-        float Rudder { set; get; }
-        //List<DataPoint> Points { set; get; } //TODO: remove this
+        // dashboard
+        double[] Selected_data { set; get; }
+        // joystick
+        double Throttle { set; get; }
+        double Aileron { set; get; }
+        double Elevator { set; get; }
+        double Rudder { set; get; }
+        // graphs
         List<DataMember> Data_members { set; get; }
         DataMember Data_member { set; get; }
         List<DataPoint> Points { set; get; }
-        TimeSeries Timeseries { set; get; }
+        List<DataPoint> Correlative_points { set; get; }
+        // regression
+        List<DataPoint> Regession_points { set; get; }
+        List<DataPoint> Line { set; get; }
 
     }
 }
