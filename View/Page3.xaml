@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlightSimulatorApp.View"
-      xmlns:oxy="http://oxyplot.org/wpf"
+      xmlns:oxy="http://oxyplot.org/wpf" xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:Page3ViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="600"
       Title="Page3" Width="816">
@@ -20,6 +20,12 @@
         <oxy:Plot Name="Graph_Correlative" Title="" Margin="0,8,24,0" Background="White" Height="234" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247" d:LayoutOverrides="HorizontalAlignment">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints_Correlative" ItemsSource="{Binding VM_Correlative_points}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+        <oxy:Plot Name="Graph_Regression" Title="" Margin="0,261,16,19" Background="White" HorizontalAlignment="Right" Width="556">
+            <oxy:Plot.Series>
+                <oxy:LineSeries Name="GraphPoints_Regression" ItemsSource="{Binding VM_Regression_points}" LineStyle="None"  MarkerType="Circle" MarkerSize="3" MarkerFill="Red"/>
+                <oxy:LineSeries Name="GraphPoints_Line" ItemsSource="{Binding VM_Regression_line}" MarkerFill="Green"/>
             </oxy:Plot.Series>
         </oxy:Plot>
     </Grid>

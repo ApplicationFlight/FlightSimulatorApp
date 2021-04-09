@@ -22,8 +22,6 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 
         List<Tuple<string, List<double>>> initialize_whole_data(string file_path) {
             List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
-            //Console.WriteLine("HERE\n");
-            // getting titles from xml:
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("..\\..\\Model\\playback_small.xml");
             XmlNodeList xnList = xmlDoc.SelectNodes("/PropertyList/generic/output/chunk");
@@ -41,18 +39,6 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
                 }
             }
             csvDoc.Close();
-            return result;
-        }
-        List<Tuple<string, List<double>>> initialize_selected_data() {
-            List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
-            for (int i = 0; i < this.n_colums; i++) {
-                string l = this.whole_data[i].Item1;
-                if (l.Equals("altitude-ft") || l.Equals("airspeed-kt") ||
-                    l.Equals("heading-deg") || l.Equals("roll-deg") ||
-                    l.Equals("pitch-deg") || l.Equals("side-slip-deg")) {
-                    result.Add(this.whole_data[i]);
-                }
-            }
             return result;
         }
     }

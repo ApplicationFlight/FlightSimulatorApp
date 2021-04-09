@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 namespace FlightSimulatorApp.View {
     using FlightSimulatorApp.ViewModel;
     using FlightSimulatorApp.Model;
+    using OxyPlot.Series;
+
     /// <summary>
     /// Interaction logic for Page3.xaml
     /// </summary>
@@ -35,12 +37,15 @@ namespace FlightSimulatorApp.View {
         private void dispatcherTimer_Tick(object sender, EventArgs e) {
             Graph.InvalidatePlot(true);
             Graph_Correlative.InvalidatePlot(true);
+            //Graph_Regression.InvalidatePlot(true);
+            Console.WriteLine("the first point X is: " + this.viewmodel.VM_Regression_points[0].X);
+
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             DataMember selected = (DataMember)((ListView)sender).SelectedItem;
             Graph.Title = selected.Name;
-            Graph_Correlative.Title = selected.Correlative;
+            Graph_Correlative.Title = selected.Correlative_string;
             //Graph_Correlative.Title = selected.Correlative.Name; 
             viewmodel.modelCSV.Data_member = selected;
         }

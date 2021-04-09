@@ -22,19 +22,15 @@ namespace FlightSimulatorApp.Model {
         public Dictionary<string, List<double>> data_map;
         // list like before, but only elements appearing in dashboard
         public List<Tuple<string, List<double>>> selected_data;
-        // a list of dataMember. Each data members has its list of points with time, and a correlated feature
-        public List<DataMember> data_members;
-        // map, name of column, list of points between two correlated features 
-        public Dictionary<string, List<double>> correlations_points;
+        // list of datamembers 
+        public Dictionary<string, DataMember> data_members;
+
         public int n_lines;
         public int n_colums;
-        public SimpleAnomalyDetector ad; 
+        public SimpleAnomalyDetector ad;
 
-
-        // contructor
+        // constructor
         public ModelDataBase(string file_path) {
-            var lines = File.ReadAllLines(file_path);
-            File.WriteAllLines(file_path, lines.Skip(1).ToArray());
             this.simple_data = initialize_simple_data(file_path);
             this.whole_data = initialize_whole_data(file_path);
             this.n_lines = this.simple_data.Count();
@@ -56,7 +52,7 @@ namespace FlightSimulatorApp.Model {
                 result.Add(line);
             }
             input.Close();
-            return result; 
+            return result;
         }
 
         List<Tuple<string, List<double>>> initialize_whole_data(string file_path) {
@@ -84,15 +80,15 @@ namespace FlightSimulatorApp.Model {
         }
         List<Tuple<string, List<double>>> initialize_selected_data() {
             List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
-            for (int i =0; i<this.n_colums; i++) {
+            for (int i = 0; i < this.n_colums; i++) {
                 string l = this.whole_data[i].Item1;
                 if (l.Equals("altitude-ft") || l.Equals("airspeed-kt") ||
                     l.Equals("heading-deg") || l.Equals("roll-deg") ||
-                    l.Equals("pitch-deg") || l.Equals("side-slip-deg")) { 
+                    l.Equals("pitch-deg") || l.Equals("side-slip-deg")) {
                     result.Add(this.whole_data[i]);
                 }
             }
-            return result; 
+            return result;
         }
 
         Dictionary<string, List<double>> initialize_data_map() {
@@ -102,32 +98,44 @@ namespace FlightSimulatorApp.Model {
                     result.Add(this.whole_data[i].Item1, this.whole_data[i].Item2);
                 }
             }
-            return result; 
+            return result;
         }
 
         void initialize_ad() {
-            ad = new SimpleAnomalyDetector(); 
+            ad = new SimpleAnomalyDetector();
             ad.learnNormal(new TimeSeries("..\\..\\Model\\reg_flight.csv"));
             // to add when ready ad.detect(filepath);
         }
 
-        void find_most_correlative(List<DataMember> data_members) { 
-            for (int i = 0; i< data_members.Count(); i++) {
-                string feature1 = data_members[i].Name;
-                // based on learning from the reg_flight
-                this.data_members[i].Correlative = this.ad.simple_cf[feature1];             
+        void find_most_correlative(Dictionary<string, DataMember> data_members) {
+            foreach (KeyValuePair<string, DataMember> entry in data_members) {
+                string feature1 = entry.Key; 
+                // adding name
+                string feature2 = this.ad.simple_cf[feature1];
+                this.data_members[feature1].Correlative_string = feature2;
+                // adding list of points
+                List<double> x = this.data_map[feature1];
+                List<double> y = this.data_map[feature2];
+                List<DataPoint> current = new List<DataPoint>();
+                for (int i = 0; i < x.Count(); i++) {
+                    current.Add(new DataPoint(x[i], y[i]));
+                }
+                this.data_members[feature1].Regression_points = current;
+                this.data_members[feature1].Regression_line = AnomalyDetectionUtil.linear_reg_list(current, current.Count());
             }
         }
 
-        List<DataMember> initialize_data_members() {
-            List<DataMember> result = new List<DataMember>();
-            for (int i = 0; i<this.whole_data.Count(); i++) {
+        Dictionary<string, DataMember> initialize_data_members() {
+            Dictionary<string, DataMember> result = new Dictionary<string, DataMember>();
+            for (int i = 0; i < this.whole_data.Count(); i++) {
                 DataMember current = new DataMember();
                 current.Name = whole_data[i].Item1;
                 List<DataPoint> points = new List<DataPoint>();
                 points.Add(new DataPoint(0, whole_data[i].Item2[0]));
                 current.Points = points;
-                result.Add(current);
+                if (!result.ContainsKey(current.Name)) {
+                    result.Add(current.Name, current);
+                }     
             }
             return result;
         }

@@ -24,10 +24,7 @@ namespace FlightSimulatorApp.ViewModel {
 
         public List<DataMember> VM_Data_members {
             get {
-                return modelCSV.Data_members;
-            }
-            set {
-                modelCSV.Data_members = value;
+                return modelCSV.Data_members.Values.ToList();
             }
         }
 
@@ -41,7 +38,6 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        private List<DataPoint> VM_correlative_points = new List<DataPoint>(); 
         public List<DataPoint> VM_Correlative_points {
             set {
                 this.modelCSV.Correlative_points = value; 
@@ -51,7 +47,31 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        
+
+        public List<DataPoint> VM_Regression_points {
+            set {
+                this.modelCSV.Regression_points = value;
+                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
+            }
+            get {
+                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
+                return this.modelCSV.Regression_points;
+            }
+        }
+
+        public List<DataPoint> VM_Regression_line {
+            set {
+                this.modelCSV.Regression_line = value;
+                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
+            }
+            get {
+                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
+                return this.modelCSV.Regression_line;
+            }
+        }
+
+
+
 
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {

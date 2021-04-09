@@ -32,13 +32,13 @@ namespace FlightSimulatorApp.Model  {
         double Elevator { set; get; }
         double Rudder { set; get; }
         // graphs
-        List<DataMember> Data_members { set; get; }
+        Dictionary<string, DataMember> Data_members { set; get; }
         DataMember Data_member { set; get; }
         List<DataPoint> Points { set; get; }
         List<DataPoint> Correlative_points { set; get; }
         // regression
-        List<DataPoint> Regession_points { set; get; }
-        List<DataPoint> Line { set; get; }
-
+        List<DataPoint> Regression_points { set; get; }
+        List<DataPoint> Regression_line { set; get; }
+        //List<DataPoint> Line { set; get; }
     }
 }

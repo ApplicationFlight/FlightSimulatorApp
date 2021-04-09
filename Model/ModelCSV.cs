@@ -22,7 +22,6 @@ namespace FlightSimulatorApp.Model {
         // fields
         ItelnetClient telnetClient;
         public event PropertyChangedEventHandler PropertyChanged;
-        private ModelDataBase reg_flight;
         private ModelDataBase anomaly_flight;
         
 
@@ -103,10 +102,8 @@ namespace FlightSimulatorApp.Model {
             get {return this.rudder;}
         }
 
-      
-
-        private List<DataMember> data_members;
-        public List<DataMember> Data_members {
+        private Dictionary<string, DataMember> data_members;
+        public Dictionary<string, DataMember> Data_members {
             set {
                 this.data_members = value;
                 NotifyPropertyChanged("Data_members");
@@ -115,7 +112,6 @@ namespace FlightSimulatorApp.Model {
                 return this.data_members;
             }
         }
-
 
         private DataMember data_member;
         public DataMember Data_member {
@@ -162,14 +158,14 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        private List<DataPoint> line = new List<DataPoint>();
-        public List<DataPoint> Line {
+        private List<DataPoint> regression_line = new List<DataPoint>();
+        public List<DataPoint> Regression_line {
             get {
-                return this.line;
+                return this.regression_line;
             }
             set {
-                this.line = value;
-                NotifyPropertyChanged("Line");
+                this.regression_line = value;
+                NotifyPropertyChanged("Regression_line");
             }
         }
 
@@ -214,27 +210,22 @@ namespace FlightSimulatorApp.Model {
             this.Elevator = this.anomaly_flight.data_map["elevator"][i];
         }
 
-        public List<DataPoint> get_points_from_name(string name) {
-            for (int i = 0; i < Data_members.Count; i++) {
-                if (Data_members[i].Name.Equals(name)) {
-                    return Data_members[i].Points;
-                }
-            }
-            return null;
-        }
-
         void update_data_members(int j) {
             int index = 0; 
             for (int i =0; i<this.Data_members.Count(); i++ ) {
-                Data_members[i].Points.Add(new DataPoint((double)j/10, anomaly_flight.data_map[Data_members[i].Name][j]));
+                string feature1 = Data_members.ElementAt(i).Key; 
+                Data_members.ElementAt(i).Value.Points.Add(new DataPoint((double)j/10, anomaly_flight.data_map[feature1][j]));
                 if (this.Data_member != null) {
-                    if (Data_members[i].Name.Equals(this.Data_member.Name)) {
+                    if (feature1.Equals(this.Data_member.Name)) {
                         index = i; 
                     }
                 }
             }
-            this.Points = Data_members[index].Points;
-            this.Correlative_points = get_points_from_name(Data_members[index].Correlative);
+            // updating all graph 
+            this.Points = Data_members.ElementAt(index).Value.Points;
+            this.Correlative_points = Data_members[Data_members.ElementAt(index).Value.Correlative_string].Points;
+            this.Regression_points = Data_members.ElementAt(index).Value.Regression_points;
+            this.Regression_line = Data_members.ElementAt(index).Value.Regression_line;
         }
 
 

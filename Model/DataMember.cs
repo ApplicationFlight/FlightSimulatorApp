@@ -37,21 +37,47 @@ namespace FlightSimulatorApp.Model {
         }
 
         // the most correlative data member
-        private string correlative;
-
-
-        public string Correlative {
+        private string correlative_string;
+        public string Correlative_string {
             set {
-                this.correlative = value;
+                this.correlative_string = value;
             }
             get {
-                return this.correlative;
+                return this.correlative_string;
             }
         }
+
+   
+        private List<DataPoint> regression_points;
+        public List<DataPoint> Regression_points {
+            set {
+                this.regression_points = value;
+            }
+            get {
+                return this.regression_points;
+            }
+        }
+
+
+        private List<DataPoint> regression_line;
+        public List<DataPoint> Regression_line {
+            set {
+                this.regression_line = value;
+            }
+            get {
+                return this.regression_line;
+            }
+        }
+
+
 
         public override string ToString() {
             return this.Name;
         }
+
+
+
+
 
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
