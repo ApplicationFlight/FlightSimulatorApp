@@ -34,15 +34,15 @@ namespace FlightSimulatorApp.View.UserControls {
             InitializeComponent(); 
         }
 
-        private void Play_Click(object sender, RoutedEventArgs e) {
+        public void Play_Click(object sender, RoutedEventArgs e) {
             vm.VM_Is_running = true;
         }
 
-        private void Pause_Click(object sender, RoutedEventArgs e) {
+        public void Pause_Click(object sender, RoutedEventArgs e) {
             vm.VM_Is_running = false;
         }
 
-        private void Speed_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        public void Speed_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             ComboBox cmb = sender as ComboBox;
             switch (Speed.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last()) {
                 case "x0.5":

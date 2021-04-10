@@ -6,18 +6,35 @@
       xmlns:local="clr-namespace:FlightSimulatorApp.View" 
       xmlns:UserControls="clr-namespace:FlightSimulatorApp.View.UserControls"
       mc:Ignorable="d" 
-      Title="Page2" Height="600" Width="600">
-    <Grid Background="#FFB9B2B2" Margin="0,0,0,0" Height="600">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="67*"/>
-            <ColumnDefinition Width="53*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="230.4"/>
-        </Grid.RowDefinitions>
-        <UserControls:VideoPlayer x:Name="videoplayer" Margin="4,0,0,41" VerticalAlignment="Bottom" Height="69" Grid.Row="1" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.ColumnSpan="2"/>
-        <UserControls:DataFlight x:Name="dataflight" Margin="0,1,20.2,39.6"/>
-        <UserControls:Joystick x:Name="joystick" Margin="39.8,10,14,120.6" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Loaded="joystick_Loaded" />
+      Title="Page2" Height="800" Width="780">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid Background="#FF67899C">
+        <UserControls:VideoPlayer x:Name="videoplayer" Margin="26,0,14,65" VerticalAlignment="Bottom" Height="74" Width="740"/>
+        <UserControls:DataFlight x:Name="dataflight" Margin="56,211,0,260" HorizontalAlignment="Left" Width="315"/>
+        <UserControls:Joystick x:Name="joystick" Margin="0,265,83,308" HorizontalAlignment="Right" Width="224" d:LayoutOverrides="TopMargin, BottomMargin"/>
+        <Button x:Name="button" Margin="20,20,0,0" VerticalAlignment="Top" Height="45" Click="Go_Data" Cursor="Hand" HorizontalAlignment="Left" Width="200">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Go_to_Graphs.png"/>
+            </Button.Background>
+        </Button>
+        <Frame x:Name="_mainFrame"/>
     </Grid>
 </Page>

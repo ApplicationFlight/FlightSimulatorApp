@@ -170,6 +170,17 @@ namespace FlightSimulatorApp.Model {
         }
 
 
+        private List<DataPoint> regression_30seconds = new List<DataPoint>();
+        public List<DataPoint> Regression_30seconds {
+            get {
+                return this.regression_30seconds;
+            }
+            set {
+                this.regression_30seconds = value;
+                NotifyPropertyChanged("Regression_30seconds");
+            }
+        }
+
         // methods
         public ModelCSV() {
             this.telnetClient = new TelnetClient();
@@ -210,6 +221,17 @@ namespace FlightSimulatorApp.Model {
             this.Elevator = this.anomaly_flight.data_map["elevator"][i];
         }
 
+
+        List<DataPoint> get_point_30_seconds(int j) {
+            int lines = 30 * (1000/this.Speed); 
+            List<DataPoint> result = new List<DataPoint>();
+            for (int i = j; i>=0 && i>=(j-lines); i--) {
+                result.Add(this.Regression_points[i]);
+            }
+            return result;
+        }
+
+
         void update_data_members(int j) {
             int index = 0; 
             for (int i =0; i<this.Data_members.Count(); i++ ) {
@@ -226,6 +248,7 @@ namespace FlightSimulatorApp.Model {
             this.Correlative_points = Data_members[Data_members.ElementAt(index).Value.Correlative_string].Points;
             this.Regression_points = Data_members.ElementAt(index).Value.Regression_points;
             this.Regression_line = Data_members.ElementAt(index).Value.Regression_line;
+            this.Regression_30seconds = get_point_30_seconds(j);
         }
 
 

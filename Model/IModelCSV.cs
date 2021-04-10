@@ -39,6 +39,7 @@ namespace FlightSimulatorApp.Model  {
         // regression
         List<DataPoint> Regression_points { set; get; }
         List<DataPoint> Regression_line { set; get; }
-        //List<DataPoint> Line { set; get; }
+        List<DataPoint> Regression_30seconds { set; get; }
+
     }
 }

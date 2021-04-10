@@ -31,11 +31,10 @@ namespace FlightSimulatorApp.View {
             videoplayer.VM = new VideoPlayerViewModel(this.model);
             dataflight.VM = new DataFlightViewModel(this.model);
             joystick.VM = new JoystickViewModel(this.model);
-
         }
 
-        private void joystick_Loaded(object sender, RoutedEventArgs e) {
-
+        public void Go_Data(object sender, RoutedEventArgs e) {
+            _mainFrame.Navigate(new Page3(model));
         }
     }
 }

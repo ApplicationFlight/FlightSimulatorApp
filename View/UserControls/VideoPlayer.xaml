@@ -4,24 +4,48 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
-      mc:Ignorable="d" Height="61.6" Width="595">
-    <Grid x:Name="text" Background="#FFC2D3CB" Height="61" VerticalAlignment="Top" Margin="-1,1,1.2,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="294*"/>
-            <ColumnDefinition Width="208*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="Play"  HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="36" Click="Play_Click" Height="27" FontSize="18"/>
-        <Button x:Name="Pause" HorizontalAlignment="Right" Margin="0,34,275.8,0" VerticalAlignment="Top" Width="36" Click="Pause_Click" Height="27" FontSize="18" RenderTransformOrigin="-1.091,0.556"/>
-        <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="10,13,10.2,15" Maximum="100" Minimum="0" TickFrequency="1" Grid.ColumnSpan="3" d:LayoutOverrides="TopMargin, BottomMargin" />
+      mc:Ignorable="d" Height="61.6" Width="850">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="text" Background="#FF4D7D9E" Height="116" VerticalAlignment="Top" Margin="-14,1,1,-55">
+        <Button x:Name="Play"   BorderThickness="0" HorizontalAlignment="Left" Margin="27,34,0,-3" VerticalAlignment="Top" Width="30" Click="Play_Click" Height="30" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/myplay_icone1.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Pause" BorderThickness="0" HorizontalAlignment="Left" Margin="63,34,0,0" VerticalAlignment="Top" Width="30" Click="Pause_Click" Height="30"  Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/mypause_icone.png"/>
+            </Button.Background>
+        </Button>
+        <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="23,10,15.6,0" Maximum="100" Minimum="0" TickFrequency="1" Height="21" VerticalAlignment="Top" />
         <!-- Button Content="Speed" HorizontalAlignment="Left" Margin="331,562,0,0" VerticalAlignment="Top" Width="145" Height="30" FontSize="18"/-->
-        <ComboBox x:Name="Speed"  HorizontalAlignment="Left" Margin="-19.2,35,0,-1" VerticalAlignment="Top" Width="61" Height="27" FontSize="18" SelectionChanged="Speed_SelectionChanged" RenderTransformOrigin="0.864,-2.542" Background="Black" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment">
-            <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,0.2,0" Width="107"/>
-            <ComboBoxItem x:Name="_10_Speed" IsSelected="True" Content="x1.0"/>
-            <ComboBoxItem x:Name="_15_Speed" Content="x1.5"/>
+        <ComboBox x:Name="Speed" HorizontalAlignment="Left" Margin="300,36,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18" SelectionChanged="Speed_SelectionChanged">
+            <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,0.2,0" Width="107" Background="#FFAEE4FD"/>
+            <ComboBoxItem x:Name="_10_Speed" IsSelected="True" Content="x1.0" Background="#FFAEE4FD"/>
+            <ComboBoxItem x:Name="_15_Speed" Content="x1.5" Background="#FFAEE4FD" BorderBrush="#FFAEE4FD"/>
         </ComboBox>
-        <TextBox x:Name="Relative_Time" Height="27" Margin="45.8,0,0.2,0" VerticalAlignment="Bottom" FontSize="20" Background="#FFEFF5F4" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
-        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="40.8,36,88.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
-        <Label Content="00:00:00" HorizontalContentAlignment="Center" Margin="130.8,36,1.2,1" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin"/>
-        <Label Content="/" HorizontalContentAlignment="Center" Margin="0,36,94.2,2" RenderTransformOrigin="-0.192,-7.346" Background="#FFEDF5F3" FontFamily="Verdana Pro" FontSize="14" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Right" Width="20"/>
+        <TextBlock x:Name="RelativeTime" Background="#FFE2E1E1" HorizontalAlignment="Right" Margin="0,36,117,0" TextWrapping="Wrap" Text="{Binding VM_Relative_time}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="28" Width="116" FontSize="20" Grid.Column="1">
+        </TextBlock>
+        <TextBlock x:Name="overall_Time" Background="#FFE2E1E1" HorizontalAlignment="Right" Margin="0,36,16,0" TextWrapping="Wrap" Text="{Binding VM_Overall_time}" VerticalAlignment="Top" Height="28" Width="89" FontSize="20" Grid.Column="1"/>
+        <TextBlock x:Name="slash" Background="#FFE2E1E1" HorizontalAlignment="Right" Margin="0,36,105,0" TextWrapping="Wrap" Text=" /   " VerticalAlignment="Top" Height="28" Width="20" FontSize="20" Grid.Column="1" RenderTransformOrigin="0.11,0.557"/>
+
     </Grid>
 </UserControl>

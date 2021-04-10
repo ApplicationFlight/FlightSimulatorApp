@@ -22,10 +22,13 @@ namespace FlightSimulatorApp.View {
     /// Interaction logic for Page3.xaml
     /// </summary>
     public partial class Page3 : Page {
+
         private Page3ViewModel viewmodel;
+        private ModelCSV model;
 
         public Page3(ModelCSV model) {
             InitializeComponent();
+            this.model = model;
             this.viewmodel = new Page3ViewModel(model);
             DataContext = viewmodel;
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -44,10 +47,14 @@ namespace FlightSimulatorApp.View {
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             DataMember selected = (DataMember)((ListView)sender).SelectedItem;
-            Graph.Title = selected.Name;
-            Graph_Correlative.Title = selected.Correlative_string;
+            Graph.Subtitle = selected.Name;
+            Graph_Correlative.Subtitle = selected.Correlative_string;
             //Graph_Correlative.Title = selected.Correlative.Name; 
             viewmodel.modelCSV.Data_member = selected;
+        }
+
+        void Go_Controls(object sender, RoutedEventArgs e) {
+            _mainFrame.Navigate(new Page2(model));
         }
     }
 }

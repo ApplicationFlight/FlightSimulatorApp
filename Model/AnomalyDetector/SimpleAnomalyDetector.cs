@@ -40,7 +40,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 				int max_index = 0;
 				for (int j = i + 1; j < ts.n_colums; j++) {
 					string feature2 = ts.whole_data[j].Item1; 
-					double correlation = Math.Abs(AnomalyDetectionUtil.pearson(x, ts.whole_data[j].Item2, ts.n_lines));
+					double correlation = Math.Abs(AnomalyDetectionUtil.pearson(x, ts.whole_data[j].Item2,  ts.n_lines));
 					if (correlation > max_correlation) {
 						max_correlation = correlation;
 						max_index = j;
@@ -51,7 +51,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 				if (!simple_cf.ContainsKey(f1)) {
 					simple_cf.Add(f1, f2);
 				}
-				output.WriteLine(f1 + ','+f2 + " CORR: " + Math.Abs(AnomalyDetectionUtil.pearson(x, ts.whole_data[max_index].Item2, ts.n_lines))); 
+				output.WriteLine(f1 + ','+f2 + "| CORR: " + Math.Abs(AnomalyDetectionUtil.pearson(x, ts.whole_data[max_index].Item2, ts.n_lines))); 
 
 				// NOW IN TERMS OF CORRELATIVE FEATURES, based on algorithm!
 				// regression case: 

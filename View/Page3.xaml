@@ -6,27 +6,63 @@
       xmlns:local="clr-namespace:FlightSimulatorApp.View"
       xmlns:oxy="http://oxyplot.org/wpf" xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:Page3ViewModel}"
       mc:Ignorable="d" 
-      d:DesignHeight="600"
-      Title="Page3" Width="816">
+      Title="Page3" Height="800" Width="780">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
-    <Grid Background="Gray" Margin="0,0,-3,0">
-
-        <ListView Margin="10,10,0,0" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
-        <oxy:Plot Name="Graph" Title="aileron" Margin="258,6,311,0" Background="White" Height="234" Width ="250" VerticalAlignment="Top">
+    <Grid Background="#FF67899C">
+        <ListView Margin="18,92,0,40" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
+        <oxy:Plot Name="Graph" Title="Selected" SubtitleFontSize="12" Margin="240,92,290,0" Background="White" Height="250" Width="250"  VerticalAlignment="Top">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints" ItemsSource="{Binding VM_Points}"/>
             </oxy:Plot.Series>
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Bottom" Title="Time"/>
+                <oxy:LinearAxis Position="Left" Title="Values"/>
+            </oxy:Plot.Axes>
         </oxy:Plot>
-        <oxy:Plot Name="Graph_Correlative" Title="" Margin="0,8,24,0" Background="White" Height="234" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247" d:LayoutOverrides="HorizontalAlignment">
+        <oxy:Plot Name="Graph_Correlative" Title="Most Correlative" SubtitleFontSize="12" Margin="0,92,20,0" Background="White" Height="250" VerticalAlignment="Top" HorizontalAlignment="Right" Width="254">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints_Correlative" ItemsSource="{Binding VM_Correlative_points}"/>
             </oxy:Plot.Series>
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Bottom" Title="Time"/>
+                <oxy:LinearAxis Position="Left" Title="Values"/>
+            </oxy:Plot.Axes>
         </oxy:Plot>
-        <oxy:Plot Name="Graph_Regression" Title="" Margin="0,261,16,19" Background="White" HorizontalAlignment="Right" Width="556">
+        <oxy:Plot Name="Graph_Regression" Title="REGRESSION" Margin="0,0,20,41" Background="White" HorizontalAlignment="Right" Width="518" Height="286" VerticalAlignment="Bottom">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints_Regression" ItemsSource="{Binding VM_Regression_points}" LineStyle="None"  MarkerType="Circle" MarkerSize="3" MarkerFill="Red"/>
                 <oxy:LineSeries Name="GraphPoints_Line" ItemsSource="{Binding VM_Regression_line}" MarkerFill="Green"/>
+                <oxy:LineSeries Name="GraphPoints_30Seconds" ItemsSource="{Binding VM_Regression_30seconds}"  LineStyle="None"  MarkerType="Circle" MarkerSize="3" MarkerFill="Green"/>
             </oxy:Plot.Series>
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Bottom" Title="Selected"/>
+                <oxy:LinearAxis Position="Left" Title="Correlative"/>
+            </oxy:Plot.Axes>
         </oxy:Plot>
+        <Button x:Name="button" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="Go_Controls" Width="200" Height="46" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Go_to_Controls.png"/>
+            </Button.Background>
+        </Button>
+        <Frame x:Name="_mainFrame"/>
     </Grid>
 </Page>

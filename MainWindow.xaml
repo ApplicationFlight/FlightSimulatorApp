@@ -5,22 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
-        Title="Flight Inspection" Height="660.5" Width="850">
-    <Grid Margin="0,0,-6.667,0.667">
+        Title="Flight Inspection" Height="800" Width="780">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="entry_image.jpg"/>
+            <ImageBrush ImageSource="Resources/entry_image.jpg"/>
         </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="51*"/>
-            <ColumnDefinition Width="580*"/>
-            <ColumnDefinition Width="117*"/>
-            <ColumnDefinition Width="57*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="UploadCVSButton" Content="Upload CSV file" Margin="210.333,172,121.667,376" Click="UploadCVSButton_Click" FontSize="20" Foreground="#FF063587" Background="#FFD1E2E8" Grid.Column="3"/>
-        <TextBlock TextWrapping="Wrap" Foreground="#FF133166" VerticalAlignment="Top" Margin="12.833,20,39,0" Height="152" FontSize="48" TextAlignment="Center" FontFamily="Microsoft YaHei UI" Grid.ColumnSpan="4" Grid.Column="2"><Run Text="Welcome to Flight"/><LineBreak/><Run Text=" Inspection"/></TextBlock>
-        <Button x:Name="ContinueButton" Content="Continue" Margin="554.333,0,10,66" VerticalAlignment="Bottom" FontSize="20" Height="46" Click="Continue_Click" Foreground="#FF063587" Background="#FFD1E2E8" Grid.ColumnSpan="3" Grid.Column="3"/>
+        <Button x:Name="UploadCVSButton" BorderThickness="0" Margin="269,274,258.6,0" Click="UploadCVSButton_Click" Height="60" VerticalAlignment="Top" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/button_upload-csv-file.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock TextWrapping="Wrap" Foreground="#FF133166" VerticalAlignment="Top" Margin="33,88,19.6,0" Height="152" FontSize="48" TextAlignment="Center" FontFamily="Microsoft YaHei UI"><Run Text="Welcome to Flight"/><LineBreak/><Run Text=" Inspection"/></TextBlock>
+        <Frame x:Name="_mainFrame"/>
     </Grid>
 </Window>
+    

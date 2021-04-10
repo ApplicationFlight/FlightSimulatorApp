@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="213.6" d:DesignWidth="223.2">
-    <Grid Margin="0,0,5.2,-0.4">
+             mc:Ignorable="d" d:DesignWidth="223.2" Height="226.865">
+    <Grid Margin="0,0,5.2,-0.4" Background="#FF4D7D9E">
         <Grid.RowDefinitions>
-            <RowDefinition Height="141*"/>
-            <RowDefinition Height="79*"/>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="82*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="10,20,27,10" RenderTransformOrigin="0.577,0.5" Grid.RowSpan="2">
+        <Grid Margin="10,20,26.8,10" RenderTransformOrigin="0.577,0.5" Grid.RowSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="11"/>
                 <RowDefinition/>
@@ -29,13 +29,15 @@
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="#FF2C2A2A" Offset="1" />
-                            <GradientStop Color="#FF79A69A" />
+                            <GradientStop Color="#FF5282AA" />
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Ellipse Fill="Gray" Height="36" Canvas.Left="-366" Stroke="Black" StrokeThickness="1" Width="36" Canvas.Top="28"/>
-                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FFA1C3B7" HorizontalAlignment="Left" Height="20" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="39.75" Canvas.Left="-368.8" Canvas.Top="-22.6" RenderTransformOrigin="0.189,-0.925" />
-                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FF97BDB3" HorizontalAlignment="Left" Height="16.875" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="42.75" RenderTransformOrigin="-0.994,6.686" Canvas.Left="-368.6" Canvas.Top="124.8">
+                <Canvas HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Canvas.Left="-369" Canvas.Top="1"  >
+                    <Ellipse Fill="#FF10558F" Height="36" Canvas.Left="{Binding VM_Aileron}" Stroke="Black" StrokeThickness="1" Width="36" Canvas.Top="{Binding VM_Elevator}"/>
+                </Canvas>
+                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FF9FC0C7" HorizontalAlignment="Left" Height="20" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="39.75" Canvas.Left="-368.8" Canvas.Top="-22.6" RenderTransformOrigin="0.189,-0.925" />
+                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FF9FC0C7" HorizontalAlignment="Left" Height="16.875" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="42.75" RenderTransformOrigin="-0.994,6.686" Canvas.Left="-368.6" Canvas.Top="124.8">
                     <Path.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1"/>
@@ -45,7 +47,7 @@
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FF9CCBBE" HorizontalAlignment="Left" Height="18.375" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="42.75" RenderTransformOrigin="0.248,0.887" Canvas.Left="-306.4" Canvas.Top="42.6">
+                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" Fill="#FF9FC0C7" HorizontalAlignment="Left" Height="18.375" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="42.75" RenderTransformOrigin="0.248,0.887" Canvas.Left="-306.4" Canvas.Top="42.6">
                     <Path.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -55,7 +57,7 @@
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" HorizontalAlignment="Left" Height="19.875" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="44.25" RenderTransformOrigin="0.5,0.5" Canvas.Left="-435.2" Canvas.Top="39.867" Fill="#FFB0D1C8">
+                <Path Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z" HorizontalAlignment="Left" Height="19.875" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="44.25" RenderTransformOrigin="0.5,0.5" Canvas.Left="-435.2" Canvas.Top="39.867" Fill="#FF9FC0C7">
                     <Path.RenderTransform>
                         <TransformGroup>
                             <RotateTransform Angle="90" />
@@ -65,7 +67,7 @@
                 </Path>
             </Canvas>
         </Grid>
-        <Slider x:Name="Throttle" Value="{Binding VM_Throttle}" Margin="-214,79,258,-32" VerticalAlignment="Top" Height="32" Maximum="1" Minimum="0" TickFrequency="0.01" RenderTransformOrigin="1.526,6.049" Cursor="SizeWE" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.Row="1" >
+        <Slider x:Name="Throttle" Value="{Binding VM_Throttle}" Margin="-214,79,257.8,-29" VerticalAlignment="Top" Height="32" Maximum="1" Minimum="0" TickFrequency="0.01" RenderTransformOrigin="1.526,6.049" Cursor="SizeWE" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.Row="2"  >
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -75,7 +77,7 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Label Content="← throttle →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="-53,85,137,11.8" RenderTransformOrigin="0.5,0.5" >
+        <Label Content="← throttle →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="-53,62.829,136.8,12" RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -85,7 +87,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Slider x:Name="Rudder" Value="{Binding VM_Rudder}" Margin="17,44,5,0" VerticalAlignment="Top" Height="18" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Foreground="#FFE5E5E5" BorderBrush="#FFCF3C3C" Grid.Row="1"  >
+        <Slider x:Name="Rudder" Value="{Binding VM_Rudder}" Margin="17,44,4.8,0" VerticalAlignment="Top" Height="18" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Foreground="#FFE5E5E5" BorderBrush="#FFCF3C3C" Grid.Row="2"  >
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -95,8 +97,8 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Label Content="← aileron →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="30,0,26,108.8" />
-        <Label Content="← elevator →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="140,83,-37,26.8" RenderTransformOrigin="0.5,0.5" >
+        <Label Content="← aileron →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="30,0,25.8,109" Grid.RowSpan="2" />
+        <Label Content="← elevator →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="140,60.829,-37.2,27" RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -106,6 +108,6 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="← rudder →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="44,50,60,-2" RenderTransformOrigin="0.5,0.5" Grid.Row="1"/>
+        <Label Content="← rudder →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="44,50,59.8,-2" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
     </Grid>
 </UserControl>

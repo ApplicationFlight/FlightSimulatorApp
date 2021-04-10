@@ -70,6 +70,17 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
+        public List<DataPoint> VM_Regression_30seconds {
+            set {
+                this.modelCSV.Regression_30seconds = value;
+                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
+            }
+            get {
+                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
+                return this.modelCSV.Regression_30seconds;
+            }
+        }
+
 
 
 

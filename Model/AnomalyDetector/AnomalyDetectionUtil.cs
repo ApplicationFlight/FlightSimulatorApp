@@ -9,14 +9,14 @@ using System.ComponentModel;
 namespace FlightSimulatorApp.Model.AnomalyDetector {
     static public class AnomalyDetectionUtil {
         
-		static public double average(List<double> x, int size) {
+		static public double average(List<double> x, double size) {
 			if (size == 0) return 0; 
             double sum = 0;
             for (int i = 0; i < size; sum += x[i], i++) ;
             return sum / size; 
         }
 
-		static public double var(List<double> x, int size) {
+		static public double var(List<double> x, double size) {
 			double av = average(x, size);
 			double sum = 0;
 			for (int i = 0; i < size; i++) {
@@ -27,7 +27,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 		}
 
 		// returns the covariance of X and Y
-		static public double cov(List<double> x, List<double> y, int size) {
+		static public double cov(List<double> x, List<double> y, double size) {
 			if (size == 0) return 0; 
 			double sum = 0;
 			for (int i = 0; i < size; i++) {
@@ -39,14 +39,14 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 
 
 		// returns the Pearson correlation coefficient of X and Y
-		static public double pearson(List<double> x, List<double> y, int size) {
+		static public double pearson(List<double> x, List<double> y, double size) {
 			double divider = Math.Sqrt(var(x, size)) * Math.Sqrt(var(y, size));
 			if (divider == 0) return 0; 
 			return cov(x, y, size) / divider;
 		}
 
 
-		static public List<DataPoint> linear_reg_list(List<DataPoint> points, int size) {
+		static public List<DataPoint> linear_reg_list(List<DataPoint> points, double size) {
 			List<DataPoint> result = new List<DataPoint>(); 
 		    Line l = linear_reg(points, size); 
 			double minX = points[0].X;
@@ -67,7 +67,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 		}
 
 		// performs a linear regression and returns the line equation
-		static public Line linear_reg(List<DataPoint> points, int size) {
+		static public Line linear_reg(List<DataPoint> points, double size) {
 			List<double> x = new List<double>();
 			List<double> y = new List<double>();
 			for (int i = 0; i < size; i++) {
@@ -84,7 +84,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 		}
 
 
-		static public Line linear_reg(List<double> x, List<double> y, int size) {
+		static public Line linear_reg(List<double> x, List<double> y, double size) {
 			double a; 
 			if (var(x, size) == 0) {
 				a = 0;
@@ -95,7 +95,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 		}
 
 		// returns the deviation between point p and the line equation of the points
-		static public double dev(DataPoint p, List<DataPoint> points, int size) {
+		static public double dev(DataPoint p, List<DataPoint> points, double size) {
 			Line l = linear_reg(points, size);
 			return dev(p, l);
 		}
@@ -105,7 +105,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
 			return Math.Abs(p.Y - l.f(p.X));
 		}
 
-		static public double max_dev(List<double> x, List<double> y, Line l, int size) {
+		static public double max_dev(List<double> x, List<double> y, Line l, double size) {
 			double result = 0; 
 			for (int i =0; i<size; i++) {
 				DataPoint p = new DataPoint(x[i], y[i]);

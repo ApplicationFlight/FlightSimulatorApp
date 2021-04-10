@@ -36,8 +36,7 @@ namespace FlightSimulatorApp {
             bool? response = fileDialog.ShowDialog();
             if (response == true) {
                 this.model.initialize_model(fileDialog.FileName);
-                Page3 page = new Page3(model);
-                this.Content = page; 
+                _mainFrame.Navigate(new Page2(model));
             }
         }
 
