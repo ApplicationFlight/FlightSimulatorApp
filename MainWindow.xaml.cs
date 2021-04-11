@@ -39,10 +39,5 @@ namespace FlightSimulatorApp {
                 _mainFrame.Navigate(new Page2(model));
             }
         }
-
-        private void Continue_Click(object sender, RoutedEventArgs e) {
-            //TODO: remember to change here
-            //main_f.Content = new Page3(this.model);
-        }
     }
 }

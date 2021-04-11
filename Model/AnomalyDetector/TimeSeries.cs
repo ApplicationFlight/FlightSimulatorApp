@@ -23,7 +23,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
         List<Tuple<string, List<double>>> initialize_whole_data(string file_path) {
             List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("..\\..\\Model\\playback_small.xml");
+            xmlDoc.Load("..\\..\\..\\Model\\playback_small.xml");
             XmlNodeList xnList = xmlDoc.SelectNodes("/PropertyList/generic/output/chunk");
             foreach (XmlNode xn in xnList) {
                 string name = xn["name"].InnerText;
@@ -31,6 +31,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
             }
             StreamReader csvDoc = new StreamReader(file_path);
             string line;
+            line = csvDoc.ReadLine();
             while ((line = csvDoc.ReadLine()) != null) {
                 string[] elements = line.Split(',');
                 int i = 0;

@@ -28,13 +28,22 @@
     </Page.Resources>
     <Grid Background="#FF67899C">
         <UserControls:VideoPlayer x:Name="videoplayer" Margin="26,0,14,65" VerticalAlignment="Bottom" Height="74" Width="740"/>
-        <UserControls:DataFlight x:Name="dataflight" Margin="56,211,0,260" HorizontalAlignment="Left" Width="315"/>
-        <UserControls:Joystick x:Name="joystick" Margin="0,265,83,308" HorizontalAlignment="Right" Width="224" d:LayoutOverrides="TopMargin, BottomMargin"/>
+        <UserControls:DataFlight x:Name="dataflight" Margin="42,283,0,188" HorizontalAlignment="Left" Width="315" d:LayoutOverrides="TopMargin, BottomMargin"/>
+        <UserControls:Joystick x:Name="joystick" Margin="0,19,99,0" VerticalAlignment="Top" Height="227" HorizontalAlignment="Right" Width="224"/>
         <Button x:Name="button" Margin="20,20,0,0" VerticalAlignment="Top" Height="45" Click="Go_Data" Cursor="Hand" HorizontalAlignment="Left" Width="200">
             <Button.Background>
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Go_to_Graphs.png"/>
             </Button.Background>
         </Button>
+        <Button VerticalAlignment="Top" Height="45" Click="Add_Algorithm" Cursor="Hand" RenderTransformOrigin="1.036,1.093" Margin="21,79,0,0" HorizontalAlignment="Left" Width="201">
+            <Button.Background>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Add_Algorithm.png"/>
+            </Button.Background>
+        </Button>
+        <ListBox x:Name="listBox" Margin="0,357,84,180" HorizontalAlignment="Right" Width="249" ItemsSource="{Binding VM_Anomaly_reports}" Background="#FF98BDCB"/>
         <Frame x:Name="_mainFrame"/>
+        <Border  BorderThickness="1" Height="49" Margin="0,290,77,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#FF35586C" HorizontalAlignment="Right" Width="265">
+            <TextBlock x:Name="data_Dashboard" TextWrapping="Wrap" FontSize="30" Margin="18.2,5.2,16,10" Foreground="White" Text="Anomaly Reports"/>
+        </Border>
     </Grid>
 </Page>

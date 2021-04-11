@@ -8,19 +8,25 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
+using System.Runtime.InteropServices; 
 
 namespace FlightSimulatorApp.Model {
+
+    
 
     using FlightSimulatorApp.ViewModel;
     using System.Collections.Generic;
     using OxyPlot;
+    using FlightSimulatorApp.Model.AnomalyDetector;
 
     public class ModelCSV : IModelCSV {
 
+        [DllImport("Circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void learnAndDetect(string CSVreg, string CSVanomaly, string result); 
 
         // fields
         ItelnetClient telnetClient;
+        String anomaly_flight_path; 
         public event PropertyChangedEventHandler PropertyChanged;
         private ModelDataBase anomaly_flight;
         
@@ -181,12 +187,26 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
+
+
+        private List<AnomalyReport> anomaly_reports = new List<AnomalyReport>();
+        public List<AnomalyReport> Anomaly_reports {
+            get {
+                return this.anomaly_reports;
+            }
+            set {
+                this.anomaly_reports = value;
+                NotifyPropertyChanged("Anomaly_reports");
+            }
+        }
+
         // methods
         public ModelCSV() {
             this.telnetClient = new TelnetClient();
         }
 
         public void initialize_model(string file_path) {
+            this.anomaly_flight_path = file_path; 
             this.anomaly_flight = new ModelDataBase(file_path);
             this.Data_members = this.anomaly_flight.data_members;
             connect();
@@ -249,6 +269,24 @@ namespace FlightSimulatorApp.Model {
             this.Regression_points = Data_members.ElementAt(index).Value.Regression_points;
             this.Regression_line = Data_members.ElementAt(index).Value.Regression_line;
             this.Regression_30seconds = get_point_30_seconds(j);
+        }
+
+
+        public void Add_Algorithm() {
+            // call dll
+            learnAndDetect("C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\reg_flight.csv", this.anomaly_flight_path, "C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\anomaly_reports.csv");
+            List <AnomalyReport> result = new List<AnomalyReport>(); 
+            StreamReader input = new StreamReader("C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\anomaly_reports.csv");
+            String line;
+            while ((line = input.ReadLine()) != null) {
+                string[] elements = line.Split(',');
+                string feature1 = elements[0];
+                string feature2 = elements[1];
+                int n = int.Parse(elements[2]);
+                result.Add(new AnomalyReport(feature1, feature2, n)); 
+            }
+            input.Close();
+            this.Anomaly_reports = result; 
         }
 
 

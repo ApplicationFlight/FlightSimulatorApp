@@ -58,7 +58,7 @@ namespace FlightSimulatorApp.Model {
         List<Tuple<string, List<double>>> initialize_whole_data(string file_path) {
             List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("..\\..\\Model\\playback_small.xml");
+            xmlDoc.Load("..\\..\\..\\Model\\playback_small.xml");
             XmlNodeList xnList = xmlDoc.SelectNodes("/PropertyList/generic/output/chunk");
             foreach (XmlNode xn in xnList) {
                 string name = xn["name"].InnerText;
@@ -103,7 +103,7 @@ namespace FlightSimulatorApp.Model {
 
         void initialize_ad() {
             ad = new SimpleAnomalyDetector();
-            ad.learnNormal(new TimeSeries("..\\..\\Model\\reg_flight.csv"));
+            ad.learnNormal(new TimeSeries("..\\..\\..\\Model\\reg_flight.csv"));
             // to add when ready ad.detect(filepath);
         }
 

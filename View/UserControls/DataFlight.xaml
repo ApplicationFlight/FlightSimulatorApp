@@ -4,9 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls" xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DataFlightViewModel}"
-             mc:Ignorable="d" Height="328.745" Width="315.161"
-            
-             >
+             mc:Ignorable="d" Height="328.745" Width="315.161">
     <Grid Margin="0,-1,3,-9.2" RenderTransformOrigin="0.353,0.447" Background="#FF67899C">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22*"/>

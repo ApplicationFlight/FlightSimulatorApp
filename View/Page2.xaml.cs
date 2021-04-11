@@ -24,10 +24,12 @@ namespace FlightSimulatorApp.View {
     public partial class Page2 : Page {
 
         public ModelCSV model;
+        public Page2ViewModel vm; 
         public Page2(ModelCSV model) {
             InitializeComponent();
             this.model = model;
-            //DataContext = vm;
+            this.vm = new Page2ViewModel(this.model);
+            DataContext = vm;
             videoplayer.VM = new VideoPlayerViewModel(this.model);
             dataflight.VM = new DataFlightViewModel(this.model);
             joystick.VM = new JoystickViewModel(this.model);
@@ -35,6 +37,10 @@ namespace FlightSimulatorApp.View {
 
         public void Go_Data(object sender, RoutedEventArgs e) {
             _mainFrame.Navigate(new Page3(model));
+        }
+
+        public void Add_Algorithm(object sender, RoutedEventArgs e) {
+            this.vm.Add_Algorithm();
         }
     }
 }

@@ -82,8 +82,6 @@ namespace FlightSimulatorApp.ViewModel {
         }
 
 
-
-
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));

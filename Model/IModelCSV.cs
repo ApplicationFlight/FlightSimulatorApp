@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using OxyPlot;
 
 namespace FlightSimulatorApp.Model  {
-
+    using FlightSimulatorApp.Model.AnomalyDetector;
     using FlightSimulatorApp.ViewModel;
 
     public interface IModelCSV : INotifyPropertyChanged {
@@ -16,6 +16,7 @@ namespace FlightSimulatorApp.Model  {
         void connect();
         void disconnet();
         void start();
+        void Add_Algorithm();
 
 
         // fields
@@ -40,6 +41,9 @@ namespace FlightSimulatorApp.Model  {
         List<DataPoint> Regression_points { set; get; }
         List<DataPoint> Regression_line { set; get; }
         List<DataPoint> Regression_30seconds { set; get; }
+
+        // anomaly report
+        List<AnomalyReport> Anomaly_reports { set; get; }
 
     }
 }
