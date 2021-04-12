@@ -1,25 +1,18 @@
-﻿using System;
+﻿using OxyPlot;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using System.Collections.Generic;
-using OxyPlot;
 
-namespace FlightSimulatorApp.Model  {
+namespace FlightSimulatorApp.Model {
     using FlightSimulatorApp.Model.AnomalyDetector;
-    using FlightSimulatorApp.ViewModel;
 
     public interface IModelCSV : INotifyPropertyChanged {
         // connection to FG
         void connect();
         void disconnet();
         void start();
-        void Add_Algorithm(string name, string path);
 
+        void Add_Algorithm(string path);
 
-        // fields
         //vieoplayer
         double Percentage { set; get; }
         int Speed { set; get; }
@@ -41,9 +34,7 @@ namespace FlightSimulatorApp.Model  {
         List<DataPoint> Regression_points { set; get; }
         List<DataPoint> Regression_line { set; get; }
         List<DataPoint> Regression_30seconds { set; get; }
-
         // anomaly report
         List<AnomalyReport> Anomaly_reports { set; get; }
-
     }
 }

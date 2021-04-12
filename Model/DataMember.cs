@@ -1,20 +1,14 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using OxyPlot;
-using System.ComponentModel;
 
 
 namespace FlightSimulatorApp.Model {
-    public class DataMember : INotifyPropertyChanged {
-        
-        public event PropertyChangedEventHandler PropertyChanged;
+    
+    public class DataMember {
 
-        // the name of the data
-        private String name; 
+        // data string name
+        private String name;
         public String Name {
             set {
                 this.name = value;
@@ -24,19 +18,19 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        // the list of points between values and time (for the graph)
+        // list of points between values and time (for the graph)
         private List<DataPoint> points;
         public List<DataPoint> Points {
             set {
                 this.points = value;
-                
+
             }
             get {
                 return this.points;
             }
         }
 
-        // the most correlative data member
+        // most correlative data member string name
         private string correlative_string;
         public string Correlative_string {
             set {
@@ -47,7 +41,7 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-   
+        // list of points between the data and its most correllated feature
         private List<DataPoint> regression_points;
         public List<DataPoint> Regression_points {
             set {
@@ -58,7 +52,7 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-
+        // a list of points representing the regression line
         private List<DataPoint> regression_line;
         public List<DataPoint> Regression_line {
             set {
@@ -69,21 +63,8 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-
-
         public override string ToString() {
             return this.Name;
-        }
-
-
-
-
-
-        public void NotifyPropertyChanged(string name) {
-            if (this.PropertyChanged != null) {
-                Console.WriteLine("We changed the Point!");
-                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
         }
     }
 }

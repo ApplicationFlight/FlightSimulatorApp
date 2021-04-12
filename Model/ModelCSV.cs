@@ -1,72 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.IO;
-using System.Net;
-using System.Net.Sockets;
+using System.Linq;
 using System.Threading;
-using System.Runtime.InteropServices; 
 
 namespace FlightSimulatorApp.Model {
 
-    
-
-    using FlightSimulatorApp.ViewModel;
-    using System.Collections.Generic;
-    using OxyPlot;
     using FlightSimulatorApp.Model.AnomalyDetector;
+    using OxyPlot;
+    using System.Collections.Generic;
     using System.Reflection;
 
     public class ModelCSV : IModelCSV {
-
-       
-        // regression algorithm
-        [DllImport("Regression_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void regression(string CSVreg, string CSVanomaly, string result);
-
-        // circle algorithm
-        [DllImport("circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void circle(string CSVreg, string CSVanomaly, string result);
-
-
-
-
-
-        // fields
-        ItelnetClient telnetClient;
-        String anomaly_flight_path; 
         public event PropertyChangedEventHandler PropertyChanged;
+        ItelnetClient telnetClient;
+        String anomaly_flight_path;
         public ModelDataBase anomaly_flight;
-        
 
-        private double percentage = 0; 
-        public double Percentage { 
-            get {return percentage; }
+        private double percentage = 0;
+        public double Percentage {
+            get { return percentage; }
             set {
                 this.percentage = value;
                 this.Relative_time = get_index_from_percentage();
                 NotifyPropertyChanged("Percentage");
-            } 
+            }
         }
 
         private int speed = 100;
         public int Speed {
-            get {return speed;}
-            set {this.speed = value; }
+            get { return speed; }
+            set { this.speed = value; }
         }
 
-        private bool is_running = true; 
+        private bool is_running = true;
         public bool Is_running {
-            get {return is_running;}
-            set {this.is_running = value;}
+            get { return is_running; }
+            set { this.is_running = value; }
         }
 
         private int relative_time;
         public int Relative_time {
-            get {return relative_time;}
+            get { return relative_time; }
             set {
                 this.relative_time = value;
                 NotifyPropertyChanged("Relative_time");
@@ -83,31 +58,30 @@ namespace FlightSimulatorApp.Model {
         }
 
         private double throttle;
-        public double Throttle { 
+        public double Throttle {
             set {
                 this.throttle = value;
                 NotifyPropertyChanged("Throttle");
             }
-            get {return this.throttle;}
+            get { return this.throttle; }
         }
+       
         private double aileron;
-
-        public double Aileron { 
+        public double Aileron {
             set {
                 this.aileron = value;
                 NotifyPropertyChanged("Aileron");
-            } 
-            get { return this.aileron;}
+            }
+            get { return this.aileron; }
         }
+        
         private double elevator { set; get; }
-        public double Elevator { 
+        public double Elevator {
             set {
                 this.elevator = value;
                 NotifyPropertyChanged("Elevator");
             }
-            get {
-                return this.elevator;
-            }
+            get { return this.elevator; }
         }
 
         private double rudder;
@@ -116,7 +90,7 @@ namespace FlightSimulatorApp.Model {
                 this.rudder = value;
                 NotifyPropertyChanged("Rudder");
             }
-            get {return this.rudder;}
+            get { return this.rudder; }
         }
 
         private Dictionary<string, DataMember> data_members;
@@ -125,39 +99,27 @@ namespace FlightSimulatorApp.Model {
                 this.data_members = value;
                 NotifyPropertyChanged("Data_members");
             }
-            get {
-                return this.data_members;
-            }
+            get {return this.data_members;}
         }
 
         private DataMember data_member;
         public DataMember Data_member {
-            set {
-                this.data_member = value;
-               
-            }
-            get {
-                return this.data_member;
-            }
+            set { this.data_member = value; }
+            get {return this.data_member;}
         }
-
 
         private List<DataPoint> points = new List<DataPoint>();
         public List<DataPoint> Points {
-            get {
-                return this.points;
-            }
+            get {return this.points;}
             set {
                 this.points = value;
-                NotifyPropertyChanged("Points");           
+                NotifyPropertyChanged("Points");
             }
         }
 
         private List<DataPoint> correlative_points = new List<DataPoint>();
         public List<DataPoint> Correlative_points {
-            get {
-                return this.correlative_points;
-            }
+            get {return this.correlative_points;}
             set {
                 this.correlative_points = value;
                 NotifyPropertyChanged("Correlative_points");
@@ -166,9 +128,7 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> regression_points = new List<DataPoint>();
         public List<DataPoint> Regression_points {
-            get {
-                return this.regression_points;
-            }
+            get {return this.regression_points;}
             set {
                 this.regression_points = value;
                 NotifyPropertyChanged("Regression_points");
@@ -177,33 +137,25 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> regression_line = new List<DataPoint>();
         public List<DataPoint> Regression_line {
-            get {
-                return this.regression_line;
-            }
+            get {return this.regression_line;}
             set {
                 this.regression_line = value;
                 NotifyPropertyChanged("Regression_line");
             }
         }
 
-
         private List<DataPoint> regression_30seconds = new List<DataPoint>();
         public List<DataPoint> Regression_30seconds {
-            get {
-                return this.regression_30seconds;
-            }
+            get {return this.regression_30seconds;}
             set {
                 this.regression_30seconds = value;
                 NotifyPropertyChanged("Regression_30seconds");
             }
         }
 
-
-
         private List<AnomalyReport> anomaly_reports = new List<AnomalyReport>();
         public List<AnomalyReport> Anomaly_reports {
-            get {
-                return this.anomaly_reports;
+            get { return this.anomaly_reports;
             }
             set {
                 this.anomaly_reports = value;
@@ -211,13 +163,14 @@ namespace FlightSimulatorApp.Model {
             }
         }
 
-        // methods
+
+
         public ModelCSV() {
             this.telnetClient = new TelnetClient();
         }
 
         public void initialize_model(string file_path) {
-            this.anomaly_flight_path = file_path; 
+            this.anomaly_flight_path = file_path;
             this.anomaly_flight = new ModelDataBase(file_path);
             this.Data_members = this.anomaly_flight.data_members;
             connect();
@@ -242,7 +195,7 @@ namespace FlightSimulatorApp.Model {
             for (int i = 0; i < anomaly_flight.selected_data.Count(); i++) {
                 result[i] = anomaly_flight.selected_data[i].Item2[j];
             }
-            this.Selected_data = result; 
+            this.Selected_data = result;
         }
 
         void update_joystick_value(int i) {
@@ -254,9 +207,9 @@ namespace FlightSimulatorApp.Model {
 
 
         List<DataPoint> get_point_30_seconds(int j) {
-            int lines = 30 * (1000/this.Speed); 
+            int lines = 30 * (1000 / this.Speed);
             List<DataPoint> result = new List<DataPoint>();
-            for (int i = j; i>=0 && i>=(j-lines); i--) {
+            for (int i = j; i >= 0 && i >= (j - lines); i--) {
                 result.Add(this.Regression_points[i]);
             }
             return result;
@@ -264,17 +217,17 @@ namespace FlightSimulatorApp.Model {
 
 
         void update_data_members(int j) {
-            int index = 0; 
-            for (int i =0; i<this.Data_members.Count(); i++ ) {
-                string feature1 = Data_members.ElementAt(i).Key; 
-                Data_members.ElementAt(i).Value.Points.Add(new DataPoint((double)j/10, anomaly_flight.data_map[feature1][j]));
+            int index = 0;
+            for (int i = 0; i < this.Data_members.Count(); i++) {
+                string feature1 = Data_members.ElementAt(i).Key;
+                Data_members.ElementAt(i).Value.Points.Add(new DataPoint((double)j / 10, anomaly_flight.data_map[feature1][j]));
                 if (this.Data_member != null) {
                     if (feature1.Equals(this.Data_member.Name)) {
-                        index = i; 
+                        index = i;
                     }
                 }
             }
-            // updating all graph 
+            // updating all graphs 
             this.Points = Data_members.ElementAt(index).Value.Points;
             this.Correlative_points = Data_members[Data_members.ElementAt(index).Value.Correlative_string].Points;
             this.Regression_points = Data_members.ElementAt(index).Value.Regression_points;
@@ -283,25 +236,20 @@ namespace FlightSimulatorApp.Model {
         }
 
 
-        public void Add_Algorithm(string name, string path) {
+        public void Add_Algorithm(string path) {
             string[] first = path.Split('\\');
-            Console.WriteLine(first);
             string last = first[first.Count() - 1];
-            Console.WriteLine(last);
-            int index = last.Count() - 8; 
-            string final = last.Substring(0, index);
-            Console.WriteLine(final);
-
+            string final = last.Substring(0, last.Count() - 8);
             Assembly.LoadFrom(path);
-
             string p1 = "..\\..\\..\\Resources\\Documents\\reg_flight.csv";
-            string p2 = this.anomaly_flight_path; 
+            string p2 = this.anomaly_flight_path;
             string p3 = "..\\..\\..\\Resources\\Documents\\anomaly_reports.csv";
-            Type thisType = this.GetType();
-            MethodInfo theMethod = thisType.GetMethod(name);
-            theMethod.Invoke(this, new[] {p1, p2, p3 });
+            DLL dll = new DLL();
+            Type thisType = dll.GetType();
+            MethodInfo theMethod = thisType.GetMethod(final);
+            theMethod.Invoke(this, new[] { p1, p2, p3 });
 
-            List <AnomalyReport> result = new List<AnomalyReport>(); 
+            List<AnomalyReport> result = new List<AnomalyReport>();
             StreamReader input = new StreamReader(p3);
             String line;
             while ((line = input.ReadLine()) != null) {
@@ -310,23 +258,18 @@ namespace FlightSimulatorApp.Model {
                 string feature2 = elements[1];
                 int n = int.Parse(elements[2]);
                 string description = elements[3];
-                result.Add(new AnomalyReport(feature1, feature2, n, description)); 
+                result.Add(new AnomalyReport(feature1, feature2, n, description));
             }
             input.Close();
-            this.Anomaly_reports = result; 
+            this.Anomaly_reports = result;
         }
 
-
         public void start() {
-            // TODO: maybe the getstream could be included with the connect of client? 
             new Thread(delegate () {
                 StreamWriter output = new StreamWriter(this.telnetClient.Client.GetStream());
                 while (true) {
                     if (this.is_running) {
                         int i = get_index_from_percentage();
-                        Console.WriteLine("INDEX: " + i + "\n");
-                        //Console.WriteLine("SPEED: " + this.speed + "\n");
-                        //Console.WriteLine(this.timeseries.simple_data[i]);
                         output.WriteLine(this.anomaly_flight.simple_data[i]);
                         update_selected_data(i);
                         update_joystick_value(i);
@@ -346,6 +289,6 @@ namespace FlightSimulatorApp.Model {
                 //Console.WriteLine("HERE IN PROPERTY CHANGED FOR "+ name+"\n");
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
-        }   
+        }
     }
 }

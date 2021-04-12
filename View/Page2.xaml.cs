@@ -25,17 +25,21 @@ namespace FlightSimulatorApp.View {
     using FlightSimulatorApp.View.UserControls;
     using System.ComponentModel;
     using System.Windows;
+    using FlightSimulatorApp.Model.AnomalyDetector;
 
     public partial class Page2 : Page {
 
         public ModelCSV model;
-        public Page2ViewModel vm; 
+        public Page2ViewModel vm;
+        public VideoPlayerViewModel vvm;
+
         public Page2(ModelCSV model) {
             InitializeComponent();
             this.model = model;
             this.vm = new Page2ViewModel(this.model);
             DataContext = vm;
-            videoplayer.VM = new VideoPlayerViewModel(this.model);
+            this.vvm = new VideoPlayerViewModel(this.model);
+            videoplayer.VM = vvm; 
             dataflight.VM = new DataFlightViewModel(this.model);
             joystick.VM = new JoystickViewModel(this.model);
         }
@@ -54,24 +58,29 @@ namespace FlightSimulatorApp.View {
                     fileDialog = new OpenFileDialog();
                     response = fileDialog.ShowDialog();
                     if (response == true) {
-                        this.vm.Add_Algorithm("regression", fileDialog.FileName);
+                        this.vm.Add_Algorithm(fileDialog.FileName);
                     }
                     break;
                 case "Circle":
                     fileDialog = new OpenFileDialog();
                     response = fileDialog.ShowDialog();
                     if (response == true) {
-                        this.vm.Add_Algorithm("circle", fileDialog.FileName);
+                        this.vm.Add_Algorithm(fileDialog.FileName);
                     }
                     break;
                 case "Other":
                     fileDialog = new OpenFileDialog();
                     response = fileDialog.ShowDialog();
                     if (response == true) {
-                        this.vm.Add_Algorithm("other", fileDialog.FileName);
+                        this.vm.Add_Algorithm(fileDialog.FileName);
                     }
                     break;
             }
+        }
+
+        void List_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            AnomalyReport selected = (AnomalyReport)((ListView)sender).SelectedItem;
+            this.vvm.VM_Percentage = ((double)selected.line / (double)this.vm.modelCSV.anomaly_flight.n_lines) * 100;
         }
     }
 }

@@ -91,6 +91,7 @@
     <Compile Include="Model\AnomalyDetector\TimeSeries.cs" />
     <Compile Include="Model\DataMember.cs" />
     <Compile Include="Model\AnomalyDetector\Line.cs" />
+    <Compile Include="Model\DLL.cs" />
     <Compile Include="Model\IModelCSV.cs" />
     <Compile Include="Model\ItelnetClient.cs" />
     <Compile Include="Model\Point.cs" />

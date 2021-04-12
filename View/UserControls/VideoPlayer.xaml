@@ -6,8 +6,76 @@
       xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
       mc:Ignorable="d">
     <UserControl.Resources>
+        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border  BorderThickness="1" BorderBrush="Black" Background="Black" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border SnapsToDevicePixels="True" Background="#FF35586C"  BorderThickness="1" BorderBrush="Red" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Ellipse Height="17" Width="17" Fill="#FF35586C"></Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="Slider"  TargetType="Slider">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Track Grid.Row="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <Style x:Key="Horizontal_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="MinHeight" Value="21" />
+                    <Setter Property="MinWidth" Value="104" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Background" Value="#FF35586C"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -35,8 +103,7 @@
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/mypause_icone.png"/>
             </Button.Background>
         </Button>
-        <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="23,10,15.6,0" Maximum="100" Minimum="0" TickFrequency="1" Height="21" VerticalAlignment="Top" />
-        <!-- Button Content="Speed" HorizontalAlignment="Left" Margin="331,562,0,0" VerticalAlignment="Top" Width="145" Height="30" FontSize="18"/-->
+        <Slider Style="{StaticResource Horizontal_Slider}" x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="23,10,15.6,0" Maximum="100" Minimum="0" TickFrequency="1" Height="21" VerticalAlignment="Top" />
         <ComboBox x:Name="Speed" HorizontalAlignment="Left" Margin="300,36,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18" SelectionChanged="Speed_SelectionChanged">
             <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,2.2,0" Width="105" Background="#FFAEE4FD"/>
             <ComboBoxItem x:Name="_10_Speed" IsSelected="True" Content="x1.0" Background="#FFAEE4FD"/>
@@ -46,6 +113,5 @@
         </TextBlock>
         <TextBlock x:Name="overall_Time" Background="#FFE2E1E1" HorizontalAlignment="Right" Margin="0,36,16,0" TextWrapping="Wrap" Text="{Binding VM_Overall_time}" VerticalAlignment="Top" Height="28" Width="89" FontSize="20" Grid.Column="1"/>
         <TextBlock x:Name="slash" Background="#FFE2E1E1" HorizontalAlignment="Right" Margin="0,36,105,0" TextWrapping="Wrap" Text=" /   " VerticalAlignment="Top" Height="28" Width="20" FontSize="20" Grid.Column="1" RenderTransformOrigin="0.11,0.557"/>
-
     </Grid>
 </UserControl>

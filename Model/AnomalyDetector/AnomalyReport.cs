@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.Model.AnomalyDetector {
+    // this class defines an anomaly report
     public class AnomalyReport {
         string feature1;
         public string Feature1 {
@@ -12,7 +9,7 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
                 this.feature1 = value;
             }
             get {
-                return this.feature1; 
+                return this.feature1;
             }
         }
 
@@ -25,11 +22,12 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
                 return this.feature2;
             }
         }
-        int line;
 
+
+        public int line;
         public string Time {
             get {
-                return get_time_from_seconds(this.line);
+                return get_time_from_seconds(this.line / 10);
             }
         }
 
@@ -49,10 +47,6 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
             this.feature2 = feature2;
             this.line = line;
             this.description = description;
-        }
-
-        public override string ToString() {
-            return feature1+" "+feature2+" | Time: "+get_time_from_seconds(line/10)+"| Description: "+this.description;
         }
 
         string get_time_from_seconds(int seconds) {

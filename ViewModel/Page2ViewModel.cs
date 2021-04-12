@@ -10,7 +10,7 @@ using FlightSimulatorApp.Model.AnomalyDetector;
 namespace FlightSimulatorApp.ViewModel {
     public class Page2ViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
-        public IModelCSV modelCSV;
+        public ModelCSV modelCSV;
 
         public Page2ViewModel(ModelCSV model) {
             this.modelCSV = model;
@@ -28,8 +28,8 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        public void Add_Algorithm(string name, string path) {
-            this.modelCSV.Add_Algorithm(name, path); 
+        public void Add_Algorithm(string path) {
+            this.modelCSV.Add_Algorithm(path); 
         }
 
 

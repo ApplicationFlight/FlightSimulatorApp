@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace FlightSimulatorApp.Model.AnomalyDetector {
+    // this timeseries is only used by the SimpleAnomalyDetect to detect correlated features
     public class TimeSeries {
 
         public List<Tuple<string, List<double>>> whole_data;
         public int n_colums;
-        public int n_lines; 
+        public int n_lines;
 
         public TimeSeries(string file_path) {
             this.whole_data = initialize_whole_data(file_path);

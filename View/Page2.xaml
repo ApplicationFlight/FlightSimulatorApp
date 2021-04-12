@@ -178,7 +178,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Sky.jpg"/>
         </Grid.Background>
-        <UserControls:VideoPlayer x:Name="videoplayer" VerticalAlignment="Bottom" Margin="17,0,25,84" Height="32"/>
+        <UserControls:VideoPlayer x:Name="videoplayer" VerticalAlignment="Bottom" Margin="17,0,11,84" Height="32"/>
         <UserControls:DataFlight x:Name="dataflight" Margin="41,350,0,121" HorizontalAlignment="Left" Width="317"/>
         <UserControls:Joystick x:Name="joystick" Width="335" HorizontalAlignment="Right" Margin="0,354,47,127"/>
         <Button x:Name="button" Margin="20,20,0,0" VerticalAlignment="Top" Height="45" Click="Go_Data" Cursor="Hand" HorizontalAlignment="Left" Width="200">
@@ -186,13 +186,13 @@
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Go_to_Graphs.png"/>
             </Button.Background>
         </Button>
-        <ListView Margin="24,84,55,0" Name="lvUsers" Height="245" VerticalAlignment="Top" ItemsSource="{Binding VM_Anomaly_reports}" FontSize="20" TextElement.FontSize="16">
+        <ListView Margin="24,84,37,0" Name="lvUsers" Height="245" VerticalAlignment="Top" ItemsSource="{Binding VM_Anomaly_reports}" FontSize="24" TextElement.FontSize="18" SelectionChanged="List_SelectionChanged">
             <ListView.View>
                 <GridView >
                     <GridViewColumn Header="Feature 1" DisplayMemberBinding="{Binding Feature1}"  />
                     <GridViewColumn Header="Feature 2" DisplayMemberBinding="{Binding Feature2}" />
                     <GridViewColumn Header="Time" DisplayMemberBinding="{Binding Time}" />
-                    <GridViewColumn Header="Anomaly Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Anomaly Algorithm Description" DisplayMemberBinding="{Binding Description}" />
                 </GridView>
             </ListView.View>
         </ListView>
