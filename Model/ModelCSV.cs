@@ -10,8 +10,18 @@ namespace FlightSimulatorApp.Model {
     using OxyPlot;
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Runtime.InteropServices;
 
     public class ModelCSV : IModelCSV {
+
+        // regression algorithm
+        [DllImport("Regression_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void regression(string CSVreg, string CSVanomaly, string result);
+
+        // circle algorithm
+        [DllImport("circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void circle(string CSVreg, string CSVanomaly, string result);
+
         public event PropertyChangedEventHandler PropertyChanged;
         ItelnetClient telnetClient;
         String anomaly_flight_path;
@@ -244,9 +254,11 @@ namespace FlightSimulatorApp.Model {
             string p1 = "..\\..\\..\\Resources\\Documents\\reg_flight.csv";
             string p2 = this.anomaly_flight_path;
             string p3 = "..\\..\\..\\Resources\\Documents\\anomaly_reports.csv";
-            DLL dll = new DLL();
-            Type thisType = dll.GetType();
-            MethodInfo theMethod = thisType.GetMethod(final);
+            //DLL dll = new DLL();
+            Type thisType = this.GetType();
+            final = final.ToLower();
+            Console.WriteLine(final);
+            MethodInfo theMethod = thisType.GetMethod(final);           
             theMethod.Invoke(this, new[] { p1, p2, p3 });
 
             List<AnomalyReport> result = new List<AnomalyReport>();
