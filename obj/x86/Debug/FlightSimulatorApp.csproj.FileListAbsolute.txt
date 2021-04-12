@@ -14,10 +14,8 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\FlightSimulator
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\FlightSimulatorApp.pdb
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\OxyPlot.dll
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\OxyPlot.Wpf.dll
-C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Regression_DLL.dll
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\OxyPlot.xml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\OxyPlot.Wpf.xml
-C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Regression_DLL.pdb
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\MainWindow.baml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\View\Page2.baml
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\View\Page3.baml
@@ -31,5 +29,6 @@ C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\FlightSimulator
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\FlightSimulatorApp.csproj.CopyComplete
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\FlightSimulatorApp.exe
 C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\obj\x86\Debug\FlightSimulatorApp.pdb
-C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Circle_DLL.dll
-C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Circle_DLL.pdb
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Resources\Documents\anomaly_flight.csv
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Resources\Documents\anomaly_reports.csv
+C:\Users\saras\OneDrive\Desktop\FlightSimulatorApp\bin\x86\Debug\Resources\Documents\reg_flight.csv

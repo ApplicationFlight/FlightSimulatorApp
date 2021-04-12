@@ -16,7 +16,7 @@ namespace FlightSimulatorApp.Model  {
         void connect();
         void disconnet();
         void start();
-        void Add_Algorithm();
+        void Add_Algorithm(string name, string path);
 
 
         // fields

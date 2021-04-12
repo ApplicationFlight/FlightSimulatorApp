@@ -27,9 +27,12 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FF67899C">
-        <ListView Margin="18,92,0,40" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
-        <oxy:Plot Name="Graph" Title="Selected" SubtitleFontSize="12" Margin="240,92,290,0" Background="White" Height="250" Width="250"  VerticalAlignment="Top">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Sky.jpg"/>
+        </Grid.Background>
+        <ListView Margin="18,92,0,97" Name="List" ItemsSource="{Binding VM_Data_members}" HorizontalAlignment="Left" Width="208" SelectionChanged="List_SelectionChanged"/>
+        <oxy:Plot Name="Graph" Title="Selected" SubtitleFontSize="12" Margin="240,92,290,0" Background="White" Height="245" Width="250"  VerticalAlignment="Top">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints" ItemsSource="{Binding VM_Points}"/>
             </oxy:Plot.Series>
@@ -38,7 +41,7 @@
                 <oxy:LinearAxis Position="Left" Title="Values"/>
             </oxy:Plot.Axes>
         </oxy:Plot>
-        <oxy:Plot Name="Graph_Correlative" Title="Most Correlative" SubtitleFontSize="12" Margin="0,92,20,0" Background="White" Height="250" VerticalAlignment="Top" HorizontalAlignment="Right" Width="254">
+        <oxy:Plot Name="Graph_Correlative" Title="Most Correlative" SubtitleFontSize="12" Margin="0,92,36,0" Background="White" Height="250" VerticalAlignment="Top" HorizontalAlignment="Right" Width="245">
             <oxy:Plot.Series>
                 <oxy:LineSeries Name="GraphPoints_Correlative" ItemsSource="{Binding VM_Correlative_points}"/>
             </oxy:Plot.Series>
@@ -47,11 +50,11 @@
                 <oxy:LinearAxis Position="Left" Title="Values"/>
             </oxy:Plot.Axes>
         </oxy:Plot>
-        <oxy:Plot Name="Graph_Regression" Title="REGRESSION" Margin="0,0,20,41" Background="White" HorizontalAlignment="Right" Width="518" Height="286" VerticalAlignment="Bottom">
+        <oxy:Plot Name="Graph_Regression" Title="REGRESSION" Margin="0,0,41,102" Background="White" HorizontalAlignment="Right" Width="490" Height="292" VerticalAlignment="Bottom">
             <oxy:Plot.Series>
-                <oxy:LineSeries Name="GraphPoints_Regression" ItemsSource="{Binding VM_Regression_points}" LineStyle="None"  MarkerType="Circle" MarkerSize="3" MarkerFill="Red"/>
+                <oxy:LineSeries Name="GraphPoints_Regression" ItemsSource="{Binding VM_Regression_points}" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Red"/>
                 <oxy:LineSeries Name="GraphPoints_Line" ItemsSource="{Binding VM_Regression_line}" MarkerFill="Green"/>
-                <oxy:LineSeries Name="GraphPoints_30Seconds" ItemsSource="{Binding VM_Regression_30seconds}"  LineStyle="None"  MarkerType="Circle" MarkerSize="3" MarkerFill="Green"/>
+                <oxy:LineSeries Name="GraphPoints_30Seconds" ItemsSource="{Binding VM_Regression_30seconds}"  LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Green"/>
             </oxy:Plot.Series>
             <oxy:Plot.Axes>
                 <oxy:LinearAxis Position="Bottom" Title="Selected"/>
@@ -64,6 +67,5 @@
             </Button.Background>
         </Button>
         <Frame x:Name="_mainFrame"/>
-
     </Grid>
 </Page>

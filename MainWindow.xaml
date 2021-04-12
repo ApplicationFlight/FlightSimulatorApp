@@ -29,7 +29,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Resources/entry_image.jpg"/>
         </Grid.Background>
-        <Button x:Name="UploadCVSButton" BorderThickness="0" Margin="269,274,258.6,0" Click="UploadCVSButton_Click" Height="60" VerticalAlignment="Top" Cursor="Hand">
+        <Button x:Name="UploadCVSButton" BorderThickness="0" Margin="269,246,258.6,0" Click="UploadCVSButton_Click" Height="60" VerticalAlignment="Top" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/button_upload-csv-file.png"/>
             </Button.Background>

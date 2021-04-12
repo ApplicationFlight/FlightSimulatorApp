@@ -18,7 +18,7 @@ namespace FlightSimulatorApp.ViewModel {
             this.modelCSV.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
-            //VM_overall_time = get_time_from_seconds(model.Timeseries.n_lines / 10);
+            VM_Overall_time = get_time_from_seconds(model.anomaly_flight.n_lines / 10);
         }
 
         public double VM_Percentage {
@@ -51,6 +51,9 @@ namespace FlightSimulatorApp.ViewModel {
         public string VM_Overall_time {
             get {
                 return VM_overall_time;
+            }
+            set {
+                this.VM_overall_time = value;
             }
         }
 

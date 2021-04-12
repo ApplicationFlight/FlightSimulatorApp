@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +12,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Microsoft.Win32;
+using FlightSimulatorApp.Model;
+using FlightSimulatorApp.ViewModel;
+using FlightSimulatorApp.View;
+
 
 namespace FlightSimulatorApp.View {
      
@@ -20,6 +24,7 @@ namespace FlightSimulatorApp.View {
     using FlightSimulatorApp.Model;
     using FlightSimulatorApp.View.UserControls;
     using System.ComponentModel;
+    using System.Windows;
 
     public partial class Page2 : Page {
 
@@ -39,8 +44,34 @@ namespace FlightSimulatorApp.View {
             _mainFrame.Navigate(new Page3(model));
         }
 
-        public void Add_Algorithm(object sender, RoutedEventArgs e) {
-            this.vm.Add_Algorithm();
+        public void Algo_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            Console.WriteLine("entered also changed");
+            ComboBox cmb = sender as ComboBox;
+            OpenFileDialog fileDialog;
+            bool? response;
+            switch (Algo.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last()) {
+                case "Regression":
+                    fileDialog = new OpenFileDialog();
+                    response = fileDialog.ShowDialog();
+                    if (response == true) {
+                        this.vm.Add_Algorithm("regression", fileDialog.FileName);
+                    }
+                    break;
+                case "Circle":
+                    fileDialog = new OpenFileDialog();
+                    response = fileDialog.ShowDialog();
+                    if (response == true) {
+                        this.vm.Add_Algorithm("circle", fileDialog.FileName);
+                    }
+                    break;
+                case "Other":
+                    fileDialog = new OpenFileDialog();
+                    response = fileDialog.ShowDialog();
+                    if (response == true) {
+                        this.vm.Add_Algorithm("other", fileDialog.FileName);
+                    }
+                    break;
+            }
         }
     }
 }

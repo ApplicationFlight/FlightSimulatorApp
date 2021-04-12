@@ -4,14 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
-             mc:Ignorable="d" d:DesignWidth="223.2" Height="226.865">
-    <Grid Margin="0,0,5.2,-0.4" Background="#FF4D7D9E">
+             mc:Ignorable="d" d:DesignWidth="310" Height="319">
+    <Grid Margin="0,0,5.2,-0.4" Background="#FF6599D1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="55*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="22*"/>
-            <RowDefinition Height="123*"/>
-            <RowDefinition Height="82*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="173*"/>
+            <RowDefinition Height="115*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="10,20,26.8,10" RenderTransformOrigin="0.577,0.5" Grid.RowSpan="3">
+        <Grid Margin="58,29.8,-47,-42" RenderTransformOrigin="0.577,0.5" Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="11"/>
                 <RowDefinition/>
@@ -67,7 +73,7 @@
                 </Path>
             </Canvas>
         </Grid>
-        <Slider x:Name="Throttle" Value="{Binding VM_Throttle}" Margin="-214,79,257.8,-29" VerticalAlignment="Top" Height="32" Maximum="1" Minimum="0" TickFrequency="0.01" RenderTransformOrigin="1.526,6.049" Cursor="SizeWE" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.Row="2"  >
+        <Slider x:Name="Throttle" Value="{Binding VM_Throttle}" Margin="-299,149,239.6,-65.8" VerticalAlignment="Top" Height="32" Maximum="1" Minimum="0" TickFrequency="0.01" RenderTransformOrigin="1.526,6.049" Cursor="SizeWE" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.Row="3"  >
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -77,7 +83,7 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Label Content="← throttle →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="-53,62.829,136.8,12" RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
+        <Label Content="← throttle →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="-49,73.8,21.6,1" RenderTransformOrigin="0.5,0.5" Grid.Row="2" >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -87,7 +93,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Slider x:Name="Rudder" Value="{Binding VM_Rudder}" Margin="17,44,4.8,0" VerticalAlignment="Top" Height="18" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Foreground="#FFE5E5E5" BorderBrush="#FFCF3C3C" Grid.Row="2"  >
+        <Slider x:Name="Rudder" Value="{Binding VM_Rudder}" Margin="39,65,10.6,0" VerticalAlignment="Top" Height="18" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Foreground="#FFE5E5E5" BorderBrush="#FFCF3C3C" Grid.Row="3" Grid.ColumnSpan="3"  >
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -97,8 +103,8 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Label Content="← aileron →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="30,0,25.8,109" Grid.RowSpan="2" />
-        <Label Content="← elevator →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="140,60.829,-37.2,27" RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
+        <Label Content="← aileron →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="79,-15.2,-52,63" Grid.Row="2" Grid.ColumnSpan="2" d:LayoutOverrides="VerticalAlignment" />
+        <Label Content="← elevator →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="-34.6,83.8,-44.4,4" RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -108,6 +114,6 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="← rudder →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="44,50,59.8,-2" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
+        <Label Content="← rudder →" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center" Margin="57,0,47.6,-29.8" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Height="67" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
     </Grid>
 </UserControl>

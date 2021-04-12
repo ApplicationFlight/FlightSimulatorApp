@@ -18,17 +18,28 @@ namespace FlightSimulatorApp.Model {
     using System.Collections.Generic;
     using OxyPlot;
     using FlightSimulatorApp.Model.AnomalyDetector;
+    using System.Reflection;
 
     public class ModelCSV : IModelCSV {
 
-        [DllImport("Circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void learnAndDetect(string CSVreg, string CSVanomaly, string result); 
+       
+        // regression algorithm
+        [DllImport("Regression_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void regression(string CSVreg, string CSVanomaly, string result);
+
+        // circle algorithm
+        [DllImport("circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void circle(string CSVreg, string CSVanomaly, string result);
+
+
+
+
 
         // fields
         ItelnetClient telnetClient;
         String anomaly_flight_path; 
         public event PropertyChangedEventHandler PropertyChanged;
-        private ModelDataBase anomaly_flight;
+        public ModelDataBase anomaly_flight;
         
 
         private double percentage = 0; 
@@ -36,7 +47,7 @@ namespace FlightSimulatorApp.Model {
             get {return percentage; }
             set {
                 this.percentage = value;
-                this.Relative_time = get_index_from_percentage(this.percentage);
+                this.Relative_time = get_index_from_percentage();
                 NotifyPropertyChanged("Percentage");
             } 
         }
@@ -222,8 +233,8 @@ namespace FlightSimulatorApp.Model {
             this.telnetClient.disconnect();
         }
 
-        int get_index_from_percentage(double percetnage) {
-            return (int)(this.anomaly_flight.n_lines * this.Percentage) / 100;
+        int get_index_from_percentage() {
+            return (int)((this.anomaly_flight.n_lines - 1) * this.Percentage) / 100;
         }
 
         void update_selected_data(int j) {
@@ -272,18 +283,34 @@ namespace FlightSimulatorApp.Model {
         }
 
 
-        public void Add_Algorithm() {
-            // call dll
-            learnAndDetect("C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\reg_flight.csv", this.anomaly_flight_path, "C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\anomaly_reports.csv");
+        public void Add_Algorithm(string name, string path) {
+            string[] first = path.Split('\\');
+            Console.WriteLine(first);
+            string last = first[first.Count() - 1];
+            Console.WriteLine(last);
+            int index = last.Count() - 8; 
+            string final = last.Substring(0, index);
+            Console.WriteLine(final);
+
+            Assembly.LoadFrom(path);
+
+            string p1 = "..\\..\\..\\Resources\\Documents\\reg_flight.csv";
+            string p2 = this.anomaly_flight_path; 
+            string p3 = "..\\..\\..\\Resources\\Documents\\anomaly_reports.csv";
+            Type thisType = this.GetType();
+            MethodInfo theMethod = thisType.GetMethod(name);
+            theMethod.Invoke(this, new[] {p1, p2, p3 });
+
             List <AnomalyReport> result = new List<AnomalyReport>(); 
-            StreamReader input = new StreamReader("C:\\Users\\saras\\OneDrive\\Desktop\\FlightSimulatorApp\\Model\\anomaly_reports.csv");
+            StreamReader input = new StreamReader(p3);
             String line;
             while ((line = input.ReadLine()) != null) {
                 string[] elements = line.Split(',');
                 string feature1 = elements[0];
                 string feature2 = elements[1];
                 int n = int.Parse(elements[2]);
-                result.Add(new AnomalyReport(feature1, feature2, n)); 
+                string description = elements[3];
+                result.Add(new AnomalyReport(feature1, feature2, n, description)); 
             }
             input.Close();
             this.Anomaly_reports = result; 
@@ -294,17 +321,19 @@ namespace FlightSimulatorApp.Model {
             // TODO: maybe the getstream could be included with the connect of client? 
             new Thread(delegate () {
                 StreamWriter output = new StreamWriter(this.telnetClient.Client.GetStream());
-                while (get_index_from_percentage(this.Percentage) < this.anomaly_flight.n_lines) {
+                while (true) {
                     if (this.is_running) {
-                        int i = get_index_from_percentage(this.Percentage);
-                        //Console.WriteLine("INDEX: " + i + "\n");
+                        int i = get_index_from_percentage();
+                        Console.WriteLine("INDEX: " + i + "\n");
                         //Console.WriteLine("SPEED: " + this.speed + "\n");
                         //Console.WriteLine(this.timeseries.simple_data[i]);
                         output.WriteLine(this.anomaly_flight.simple_data[i]);
-                        this.Percentage = this.Percentage + (100 / (double)this.anomaly_flight.n_lines);
                         update_selected_data(i);
                         update_joystick_value(i);
-                        update_data_members(i); 
+                        update_data_members(i);
+                        if (this.Percentage + 100 / (double)this.anomaly_flight.n_lines <= 100) {
+                            this.Percentage = this.Percentage + (100 / (double)this.anomaly_flight.n_lines);
+                        }
                         Thread.Sleep(this.Speed);
                     }
                 }

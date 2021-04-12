@@ -28,8 +28,8 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        public void Add_Algorithm() {
-            this.modelCSV.Add_Algorithm(); 
+        public void Add_Algorithm(string name, string path) {
+            this.modelCSV.Add_Algorithm(name, path); 
         }
 
 

@@ -8,16 +8,18 @@ namespace FlightSimulatorApp.Model.AnomalyDetector {
     public class AnomalyReport {
         string feature1;
         string feature2;
-        int line; 
+        int line;
+        string description; 
 
-        public AnomalyReport(string feature1, string feature2, int line) {
+        public AnomalyReport(string feature1, string feature2, int line, string description) {
             this.feature1 = feature1;
             this.feature2 = feature2;
             this.line = line;
+            this.description = description;
         }
 
         public override string ToString() {
-            return feature1+" "+feature2+" | Time: "+get_time_from_seconds(line/10);
+            return feature1+" "+feature2+" | Time: "+get_time_from_seconds(line/10)+"| Description: "+this.description;
         }
 
         string get_time_from_seconds(int seconds) {

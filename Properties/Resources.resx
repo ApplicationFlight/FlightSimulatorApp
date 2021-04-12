@@ -142,4 +142,7 @@
   <data name="myplay_icone1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\UserControls\myplay_icone1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Sky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sky.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

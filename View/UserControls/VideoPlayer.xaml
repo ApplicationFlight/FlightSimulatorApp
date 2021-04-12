@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:FlightSimulatorApp.View.UserControls"
-      mc:Ignorable="d" Height="61.6" Width="850">
+      mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Green"/>
@@ -24,7 +24,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="text" Background="#FF4D7D9E" Height="116" VerticalAlignment="Top" Margin="-14,1,1,-55">
+    <Grid x:Name="text" Background="#FF6599D1" Height="116" VerticalAlignment="Top" Margin="-14,1,1,-55">
         <Button x:Name="Play"   BorderThickness="0" HorizontalAlignment="Left" Margin="27,34,0,-3" VerticalAlignment="Top" Width="30" Click="Play_Click" Height="30" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/myplay_icone1.png"/>
@@ -38,7 +38,7 @@
         <Slider x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="23,10,15.6,0" Maximum="100" Minimum="0" TickFrequency="1" Height="21" VerticalAlignment="Top" />
         <!-- Button Content="Speed" HorizontalAlignment="Left" Margin="331,562,0,0" VerticalAlignment="Top" Width="145" Height="30" FontSize="18"/-->
         <ComboBox x:Name="Speed" HorizontalAlignment="Left" Margin="300,36,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18" SelectionChanged="Speed_SelectionChanged">
-            <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,0.2,0" Width="107" Background="#FFAEE4FD"/>
+            <ComboBoxItem x:Name="_05_Speed" Content="x0.5" HorizontalAlignment="Right" Margin="0,0,2.2,0" Width="105" Background="#FFAEE4FD"/>
             <ComboBoxItem x:Name="_10_Speed" IsSelected="True" Content="x1.0" Background="#FFAEE4FD"/>
             <ComboBoxItem x:Name="_15_Speed" Content="x1.5" Background="#FFAEE4FD" BorderBrush="#FFAEE4FD"/>
         </ComboBox>
