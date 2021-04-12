@@ -178,23 +178,32 @@
         <Grid.Background>
             <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Sky.jpg"/>
         </Grid.Background>
-        <UserControls:VideoPlayer x:Name="videoplayer" VerticalAlignment="Bottom" Margin="17,0,6,84" Height="32"/>
+        <UserControls:VideoPlayer x:Name="videoplayer" VerticalAlignment="Bottom" Margin="17,0,25,84" Height="32"/>
         <UserControls:DataFlight x:Name="dataflight" Margin="41,350,0,121" HorizontalAlignment="Left" Width="317"/>
-        <UserControls:Joystick x:Name="joystick" Width="335" HorizontalAlignment="Right" Margin="0,354,21,127" d:LayoutOverrides="Height"/>
+        <UserControls:Joystick x:Name="joystick" Width="335" HorizontalAlignment="Right" Margin="0,354,47,127"/>
         <Button x:Name="button" Margin="20,20,0,0" VerticalAlignment="Top" Height="45" Click="Go_Data" Cursor="Hand" HorizontalAlignment="Left" Width="200">
             <Button.Background>
                 <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/Go_to_Graphs.png"/>
             </Button.Background>
         </Button>
-        <ListBox x:Name="listBox" Margin="25,95,24,0" ItemsSource="{Binding VM_Anomaly_reports}" Background="#FF6599D1" Height="234" VerticalAlignment="Top" FontSize="16"/>
+        <ListView Margin="24,84,55,0" Name="lvUsers" Height="245" VerticalAlignment="Top" ItemsSource="{Binding VM_Anomaly_reports}" FontSize="20" TextElement.FontSize="16">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Feature 1" DisplayMemberBinding="{Binding Feature1}"  />
+                    <GridViewColumn Header="Feature 2" DisplayMemberBinding="{Binding Feature2}" />
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding Time}" />
+                    <GridViewColumn Header="Anomaly Description" DisplayMemberBinding="{Binding Description}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
         <Border  BorderThickness="1" Height="54" Margin="240,15,275,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#FF35586C">
             <TextBlock TextWrapping="Wrap" FontSize="30" Margin="-0.8,0.2,1,-0.4" Foreground="White" TextAlignment="Center"><Run Text="Anomaly Reports"/></TextBlock>
         </Border>
-        <ComboBox x:Name="Algo" Text="  Pick Anomaly Detection" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="521,20,0,0" VerticalAlignment="Top" Width="240" Height="44" FontSize="18" SelectionChanged="Algo_SelectionChanged">
+        <ComboBox x:Name="Algo" Text="  Pick Anomaly Detection" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="521,20,0,0" VerticalAlignment="Top" Width="227" Height="44" FontSize="18" SelectionChanged="Algo_SelectionChanged">
             <ComboBoxItem x:Name="Regression" Content="Regression" Width="207" Background="#FFAEE4FD" Height="29"/>
             <ComboBoxItem x:Name="Circle" Content="Circle" Background="#FFAEE4FD" Width="207"/>
             <ComboBoxItem x:Name="Other" Content="Other" Background="#FFAEE4FD" BorderBrush="#FFAEE4FD" Width="207"/>
         </ComboBox>
-        <Frame x:Name="_mainFrame"/>
+        <Frame x:Name="_mainFrame" HorizontalAlignment="Left" Margin="-1069,-155,0,155" Width="780"/>
     </Grid>
 </Page>

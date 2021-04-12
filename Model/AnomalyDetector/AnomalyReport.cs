@@ -7,9 +7,42 @@ using System.Threading.Tasks;
 namespace FlightSimulatorApp.Model.AnomalyDetector {
     public class AnomalyReport {
         string feature1;
+        public string Feature1 {
+            set {
+                this.feature1 = value;
+            }
+            get {
+                return this.feature1; 
+            }
+        }
+
         string feature2;
+        public string Feature2 {
+            set {
+                this.feature2 = value;
+            }
+            get {
+                return this.feature2;
+            }
+        }
         int line;
-        string description; 
+
+        public string Time {
+            get {
+                return get_time_from_seconds(this.line);
+            }
+        }
+
+
+        string description;
+        public string Description {
+            set {
+                this.description = value;
+            }
+            get {
+                return this.description;
+            }
+        }
 
         public AnomalyReport(string feature1, string feature2, int line, string description) {
             this.feature1 = feature1;
