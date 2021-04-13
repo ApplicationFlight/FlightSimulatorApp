@@ -36,15 +36,18 @@ Before you can start using our app, there are a few steps you need to follow.
 4. Make sure to have a correct CSV file to upload at start. We provide with an example under: `> Resources > Document > anomaly_flight.csv`
 
 ### DLL
-The anomaly detection algorithm is provided by the user. During runtime, you have an option to add a dll, which will serve as algorithm to detced anomalies.
-**Format:**
-The DLL inserted needs to be in `C#`. The name of the DLL needs to be: DLL_{algorithm name}.dll.
-Inside, there needs to be a class called: DLL_{algorithm name}, within a namspace also called DLL_{algorithm name}.
-Inside the Class, there needs to be a function called: {algorithm name}, receveing 3 string parameters.
-**Functionality**
-The  {algorithm name} function takes the input a train file, the anomaly flight, and the output file. It needs to learn form the train file, check against the anomaly flight for anomalies, and return in the output file a list of anomalies, in the following format: {feature1 name}, {feature2 name}, {line of anomaly in file}, {algorithm description/addition info}.
-All of these fields will be analized by our application and showed for the user to further inspect.
+The anomaly detection algorithm is provided by the user. During runtime, you have an option to add a dll, which will serve as algorithm to detced anomalies.   
+
+**Format:**   
+The DLL inserted needs to be in `C#`. The name of the DLL needs to be: DLL_{algorithm name}.dll.      
+Inside, there needs to be a class called: DLL_{algorithm name}, within a namspace also called DLL_{algorithm name}.      
+Inside the Class, there needs to be a function called: {algorithm name}, receveing 3 string parameters.     
+
+**Functionality**     
+The  {algorithm name} function takes the input a train file, the anomaly flight, and the output file. It needs to learn form the train file, check against the anomaly flight for anomalies, and return in the output file a list of anomalies, in the following format: {feature1 name}, {feature2 name}, {line of anomaly in file}, {algorithm description/addition info}.       
+All of these fields will be analized by our application and showed for the user to further inspect.     
 Note: the description if purely subjective, each algorithm might have different representation, is up to the user to chose what descriptio/additional info fits the best.
+
 **Bonus**
 As said above, the dll provided must be in `C#`. But, f you wish to use `C++` code it's also possible. In fact, we provide two examples of dlls written in `C++`. ( `> DLL_Resources`). 
 
