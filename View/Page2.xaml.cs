@@ -1,31 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using Microsoft.Win32;
+using System;
 using System.Linq;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using Microsoft.Win32;
-using FlightSimulatorApp.Model;
-using FlightSimulatorApp.ViewModel;
-using FlightSimulatorApp.View;
+using System.Windows.Controls;
 
 
 namespace FlightSimulatorApp.View {
-     
-    using FlightSimulatorApp.ViewModel;
+
     using FlightSimulatorApp.Model;
-    using FlightSimulatorApp.View.UserControls;
-    using System.ComponentModel;
-    using System.Windows;
     using FlightSimulatorApp.Model.AnomalyDetector;
+    using FlightSimulatorApp.ViewModel;
+    using System.Windows;
 
     public partial class Page2 : Page {
 
@@ -39,7 +23,7 @@ namespace FlightSimulatorApp.View {
             this.vm = new Page2ViewModel(this.model);
             DataContext = vm;
             this.vvm = new VideoPlayerViewModel(this.model);
-            videoplayer.VM = vvm; 
+            videoplayer.VM = vvm;
             dataflight.VM = new DataFlightViewModel(this.model);
             joystick.VM = new JoystickViewModel(this.model);
         }

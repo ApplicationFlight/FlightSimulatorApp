@@ -95,12 +95,12 @@
     <Grid x:Name="text" Background="#FF6599D1" Height="116" VerticalAlignment="Top" Margin="-14,1,1,-55">
         <Button x:Name="Play"   BorderThickness="0" HorizontalAlignment="Left" Margin="27,34,0,-3" VerticalAlignment="Top" Width="30" Click="Play_Click" Height="30" Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/myplay_icone1.png"/>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/myplay_icone1.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="Pause" BorderThickness="0" HorizontalAlignment="Left" Margin="63,34,0,0" VerticalAlignment="Top" Width="30" Click="Pause_Click" Height="30"  Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="/FlightSimulatorApp;component/View/UserControls/mypause_icone.png"/>
+                <ImageBrush ImageSource="/FlightSimulatorApp;component/Resources/mypause_icone.png"/>
             </Button.Background>
         </Button>
         <Slider Style="{StaticResource Horizontal_Slider}" x:Name="Slider_Time" Value="{Binding VM_Percentage}" Margin="23,10,15.6,0" Maximum="100" Minimum="0" TickFrequency="1" Height="21" VerticalAlignment="Top" />

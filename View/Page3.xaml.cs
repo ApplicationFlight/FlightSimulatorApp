@@ -1,22 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlightSimulatorApp.View {
-    using FlightSimulatorApp.ViewModel;
     using FlightSimulatorApp.Model;
-    using OxyPlot.Series;
+    using FlightSimulatorApp.ViewModel;
 
     /// <summary>
     /// Interaction logic for Page3.xaml
@@ -40,8 +28,6 @@ namespace FlightSimulatorApp.View {
         private void dispatcherTimer_Tick(object sender, EventArgs e) {
             Graph.InvalidatePlot(true);
             Graph_Correlative.InvalidatePlot(true);
-            //Graph_Regression.InvalidatePlot(true);
-            Console.WriteLine("the first point X is: " + this.viewmodel.VM_Regression_points[0].X);
 
         }
 
@@ -49,7 +35,6 @@ namespace FlightSimulatorApp.View {
             DataMember selected = (DataMember)((ListView)sender).SelectedItem;
             Graph.Subtitle = selected.Name;
             Graph_Correlative.Subtitle = selected.Correlative_string;
-            //Graph_Correlative.Title = selected.Correlative.Name; 
             viewmodel.modelCSV.Data_member = selected;
         }
 

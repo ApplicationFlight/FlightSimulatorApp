@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using FlightSimulatorApp.Model;
+﻿using FlightSimulatorApp.Model;
 using FlightSimulatorApp.Model.AnomalyDetector;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace FlightSimulatorApp.ViewModel {
     public class Page2ViewModel : INotifyPropertyChanged {
@@ -29,7 +26,7 @@ namespace FlightSimulatorApp.ViewModel {
         }
 
         public void Add_Algorithm(string path) {
-            this.modelCSV.Add_Algorithm(path); 
+            this.modelCSV.Add_Algorithm(path);
         }
 
 

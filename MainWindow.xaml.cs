@@ -28,7 +28,6 @@ namespace FlightSimulatorApp {
         public MainWindow() {
             InitializeComponent();
             this.model = new ModelCSV();
-            //DataContext = model;
         }
 
         private void UploadCVSButton_Click(object sender, RoutedEventArgs e) {
@@ -38,6 +37,12 @@ namespace FlightSimulatorApp {
                 this.model.initialize_model(fileDialog.FileName);
                 _mainFrame.Navigate(new Page2(model));
             }
+        }
+
+        protected override void OnClosed(EventArgs e) {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+            this.model.disconnet();
         }
     }
 }

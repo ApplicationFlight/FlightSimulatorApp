@@ -1,11 +1,8 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text.RegularExpressions;
-using OxyPlot;
+using System.Linq;
 
 namespace FlightSimulatorApp.Model {
     using FlightSimulatorApp.Model.AnomalyDetector;
@@ -46,7 +43,6 @@ namespace FlightSimulatorApp.Model {
             List<string> result = new List<string>();
             StreamReader input = new StreamReader(file_path);
             string line;
-            // skipping one line to remove titles, and basing on the xml. TODO: Maybe to change later 
             line = input.ReadLine();
             while ((line = input.ReadLine()) != null) {
                 result.Add(line);
@@ -67,7 +63,6 @@ namespace FlightSimulatorApp.Model {
             }
             StreamReader csvDoc = new StreamReader(file_path);
             string line;
-            // skipping one line to remove titles, and basing on the xml. TODO: Maybe to change later 
             line = csvDoc.ReadLine();
             while ((line = csvDoc.ReadLine()) != null) {
                 string[] elements = line.Split(',');
@@ -105,12 +100,11 @@ namespace FlightSimulatorApp.Model {
         void initialize_ad() {
             ad = new SimpleAnomalyDetector();
             ad.learnNormal(new TimeSeries(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\Resources\\Documents\\reg_flight.csv"));
-            // TODO: add when ready ad.detect(filepath);
         }
 
         void find_most_correlative(Dictionary<string, DataMember> data_members) {
             foreach (KeyValuePair<string, DataMember> entry in data_members) {
-                string feature1 = entry.Key; 
+                string feature1 = entry.Key;
                 // adding name
                 string feature2 = this.ad.simple_cf[feature1];
                 this.data_members[feature1].Correlative_string = feature2;
@@ -136,7 +130,7 @@ namespace FlightSimulatorApp.Model {
                 current.Points = points;
                 if (!result.ContainsKey(current.Name)) {
                     result.Add(current.Name, current);
-                }     
+                }
             }
             return result;
         }

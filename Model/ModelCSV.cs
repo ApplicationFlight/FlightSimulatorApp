@@ -10,22 +10,16 @@ namespace FlightSimulatorApp.Model {
     using OxyPlot;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Runtime.InteropServices;
 
     public class ModelCSV : IModelCSV {
-
-        // regression algorithm
-        [DllImport("Regression_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void regression(string CSVreg, string CSVanomaly, string result);
-
-        // circle algorithm
-        [DllImport("circle_DLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void circle(string CSVreg, string CSVanomaly, string result);
 
         public event PropertyChangedEventHandler PropertyChanged;
         ItelnetClient telnetClient;
         String anomaly_flight_path;
         public ModelDataBase anomaly_flight;
+
+        StreamWriter output;
+        Boolean is_connected;
 
         private double percentage = 0;
         public double Percentage {
@@ -75,7 +69,7 @@ namespace FlightSimulatorApp.Model {
             }
             get { return this.throttle; }
         }
-       
+
         private double aileron;
         public double Aileron {
             set {
@@ -84,7 +78,7 @@ namespace FlightSimulatorApp.Model {
             }
             get { return this.aileron; }
         }
-        
+
         private double elevator { set; get; }
         public double Elevator {
             set {
@@ -109,18 +103,18 @@ namespace FlightSimulatorApp.Model {
                 this.data_members = value;
                 NotifyPropertyChanged("Data_members");
             }
-            get {return this.data_members;}
+            get { return this.data_members; }
         }
 
         private DataMember data_member;
         public DataMember Data_member {
             set { this.data_member = value; }
-            get {return this.data_member;}
+            get { return this.data_member; }
         }
 
         private List<DataPoint> points = new List<DataPoint>();
         public List<DataPoint> Points {
-            get {return this.points;}
+            get { return this.points; }
             set {
                 this.points = value;
                 NotifyPropertyChanged("Points");
@@ -129,7 +123,7 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> correlative_points = new List<DataPoint>();
         public List<DataPoint> Correlative_points {
-            get {return this.correlative_points;}
+            get { return this.correlative_points; }
             set {
                 this.correlative_points = value;
                 NotifyPropertyChanged("Correlative_points");
@@ -138,7 +132,7 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> regression_points = new List<DataPoint>();
         public List<DataPoint> Regression_points {
-            get {return this.regression_points;}
+            get { return this.regression_points; }
             set {
                 this.regression_points = value;
                 NotifyPropertyChanged("Regression_points");
@@ -147,7 +141,7 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> regression_line = new List<DataPoint>();
         public List<DataPoint> Regression_line {
-            get {return this.regression_line;}
+            get { return this.regression_line; }
             set {
                 this.regression_line = value;
                 NotifyPropertyChanged("Regression_line");
@@ -156,7 +150,7 @@ namespace FlightSimulatorApp.Model {
 
         private List<DataPoint> regression_30seconds = new List<DataPoint>();
         public List<DataPoint> Regression_30seconds {
-            get {return this.regression_30seconds;}
+            get { return this.regression_30seconds; }
             set {
                 this.regression_30seconds = value;
                 NotifyPropertyChanged("Regression_30seconds");
@@ -165,7 +159,8 @@ namespace FlightSimulatorApp.Model {
 
         private List<AnomalyReport> anomaly_reports = new List<AnomalyReport>();
         public List<AnomalyReport> Anomaly_reports {
-            get { return this.anomaly_reports;
+            get {
+                return this.anomaly_reports;
             }
             set {
                 this.anomaly_reports = value;
@@ -185,14 +180,18 @@ namespace FlightSimulatorApp.Model {
             this.Data_members = this.anomaly_flight.data_members;
             connect();
             start();
-            // TODO: think about where disconnect
         }
 
         public void connect() {
             this.telnetClient.connect();
+            this.output = new StreamWriter(this.telnetClient.Client.GetStream());
+            this.is_connected = true;
+
         }
 
         public void disconnet() {
+            this.is_connected = false; 
+            this.output.Close();
             this.telnetClient.disconnect();
         }
 
@@ -249,17 +248,19 @@ namespace FlightSimulatorApp.Model {
         public void Add_Algorithm(string path) {
             string[] first = path.Split('\\');
             string last = first[first.Count() - 1];
-            string final = last.Substring(0, last.Count() - 8);
-            Assembly.LoadFrom(path);
+            string final = last.Substring(0, last.Count() - 4);
+            string class_name = final + '.' + final;
+            string function_name = final.Substring(4).ToLower();          
             string p1 = "..\\..\\..\\Resources\\Documents\\reg_flight.csv";
             string p2 = this.anomaly_flight_path;
             string p3 = "..\\..\\..\\Resources\\Documents\\anomaly_reports.csv";
-            //DLL dll = new DLL();
-            Type thisType = this.GetType();
-            final = final.ToLower();
-            Console.WriteLine(final);
-            MethodInfo theMethod = thisType.GetMethod(final);           
-            theMethod.Invoke(this, new[] { p1, p2, p3 });
+            var DLL = Assembly.LoadFile(path);
+            var runner_dll = DLL.GetType(class_name);
+            var c = Activator.CreateInstance(runner_dll);
+            var method = runner_dll.GetMethod(function_name);
+            method.Invoke(c, new object[] { p1, p2, p3 });
+
+
 
             List<AnomalyReport> result = new List<AnomalyReport>();
             StreamReader input = new StreamReader(p3);
@@ -278,8 +279,7 @@ namespace FlightSimulatorApp.Model {
 
         public void start() {
             new Thread(delegate () {
-                StreamWriter output = new StreamWriter(this.telnetClient.Client.GetStream());
-                while (true) {
+                while (is_connected) {
                     if (this.is_running) {
                         int i = get_index_from_percentage();
                         output.WriteLine(this.anomaly_flight.simple_data[i]);
@@ -292,13 +292,11 @@ namespace FlightSimulatorApp.Model {
                         Thread.Sleep(this.Speed);
                     }
                 }
-                output.Close();
             }).Start();
         }
 
         public void NotifyPropertyChanged(string name) {
             if (this.PropertyChanged != null) {
-                //Console.WriteLine("HERE IN PROPERTY CHANGED FOR "+ name+"\n");
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }

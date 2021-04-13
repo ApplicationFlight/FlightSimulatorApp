@@ -204,6 +204,6 @@
             <ComboBoxItem x:Name="Circle" Content="Circle" Background="#FFAEE4FD" Width="207"/>
             <ComboBoxItem x:Name="Other" Content="Other" Background="#FFAEE4FD" BorderBrush="#FFAEE4FD" Width="207"/>
         </ComboBox>
-        <Frame x:Name="_mainFrame" HorizontalAlignment="Left" Margin="-1069,-155,0,155" Width="780"/>
+        <Frame x:Name="_mainFrame"/>
     </Grid>
 </Page>

@@ -1,11 +1,8 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using System.Collections.Generic;
-using OxyPlot;
+using System.Linq;
 
 
 namespace FlightSimulatorApp.ViewModel {
@@ -28,19 +25,18 @@ namespace FlightSimulatorApp.ViewModel {
             }
         }
 
-        //private List<DataPoint> VM_points = new List<DataPoint>();
         public List<DataPoint> VM_Points {
             get {
                 return this.modelCSV.Points;
             }
             set {
-                this.modelCSV.Points = value; 
+                this.modelCSV.Points = value;
             }
         }
 
         public List<DataPoint> VM_Correlative_points {
             set {
-                this.modelCSV.Correlative_points = value; 
+                this.modelCSV.Correlative_points = value;
             }
             get {
                 return this.modelCSV.Correlative_points;
@@ -51,10 +47,8 @@ namespace FlightSimulatorApp.ViewModel {
         public List<DataPoint> VM_Regression_points {
             set {
                 this.modelCSV.Regression_points = value;
-                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
             }
             get {
-                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
                 return this.modelCSV.Regression_points;
             }
         }
@@ -62,10 +56,8 @@ namespace FlightSimulatorApp.ViewModel {
         public List<DataPoint> VM_Regression_line {
             set {
                 this.modelCSV.Regression_line = value;
-                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
             }
             get {
-                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
                 return this.modelCSV.Regression_line;
             }
         }
@@ -73,10 +65,8 @@ namespace FlightSimulatorApp.ViewModel {
         public List<DataPoint> VM_Regression_30seconds {
             set {
                 this.modelCSV.Regression_30seconds = value;
-                //Console.WriteLine("the first point X is: " + VM_Regression_points[0].X); 
             }
             get {
-                //Console.WriteLine("the first point X is: " + this.modelCSV.Regression_points[0].X);
                 return this.modelCSV.Regression_30seconds;
             }
         }

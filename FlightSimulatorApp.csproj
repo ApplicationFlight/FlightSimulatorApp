@@ -91,10 +91,8 @@
     <Compile Include="Model\AnomalyDetector\TimeSeries.cs" />
     <Compile Include="Model\DataMember.cs" />
     <Compile Include="Model\AnomalyDetector\Line.cs" />
-    <Compile Include="Model\DLL.cs" />
     <Compile Include="Model\IModelCSV.cs" />
     <Compile Include="Model\ItelnetClient.cs" />
-    <Compile Include="Model\Point.cs" />
     <Compile Include="Model\TelnetClient.cs" />
     <Compile Include="Model\ModelDataBase.cs" />
     <Compile Include="ViewModel\DataFlightViewModel.cs" />
@@ -194,14 +192,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\UserControls\mypause_icone.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\UserControls\myplay_icone1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.jpg">
@@ -241,6 +231,16 @@
   <ItemGroup>
     <Resource Include="Resources\Documents\playback_small.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mypause_icone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\myplay_icone1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

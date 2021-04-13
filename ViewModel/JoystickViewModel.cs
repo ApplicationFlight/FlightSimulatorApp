@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace FlightSimulatorApp.ViewModel {
@@ -30,7 +26,6 @@ namespace FlightSimulatorApp.ViewModel {
         }
         public double VM_Aileron {
             get {
-                // return modelCSV.Aileron;
                 return (modelCSV.Aileron + 1) * 18;
             }
             set {
