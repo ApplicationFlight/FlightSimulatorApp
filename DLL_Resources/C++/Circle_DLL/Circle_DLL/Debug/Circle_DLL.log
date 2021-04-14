@@ -1,0 +1,16 @@
+﻿  Circle.cpp
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\Circle.cpp(14,77): warning C4273: 'circle': inconsistent dll linkage
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\Circle_Library.h(14,36): message : see previous definition of 'circle'
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\Circle.cpp(24,27): warning C4018: '<': signed/unsigned mismatch
+  SimpleAnomalyDetector.cpp
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(14,17): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(24,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(46,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(59,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(64,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\saras\OneDrive\Desktop\Circle_DLL\Circle_DLL\SimpleAnomalyDetector.cpp(102,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  anomaly_detection_util.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  anomaly_detection_util.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+     Creating library C:\Users\saras\OneDrive\Desktop\Circle_DLL\Debug\Circle_DLL.lib and object C:\Users\saras\OneDrive\Desktop\Circle_DLL\Debug\Circle_DLL.exp
+  Circle_DLL.vcxproj -> C:\Users\saras\OneDrive\Desktop\Circle_DLL\Debug\Circle_DLL.dll

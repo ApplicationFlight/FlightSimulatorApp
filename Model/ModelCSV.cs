@@ -251,9 +251,9 @@ namespace FlightSimulatorApp.Model {
             string final = last.Substring(0, last.Count() - 4);
             string class_name = final + '.' + final;
             string function_name = final.Substring(4).ToLower();          
-            string p1 = "..\\..\\..\\Resources\\Documents\\reg_flight.csv";
+            string p1 = "..\\..\\Resources\\Documents\\reg_flight.csv";
             string p2 = this.anomaly_flight_path;
-            string p3 = "..\\..\\..\\Resources\\Documents\\anomaly_reports.csv";
+            string p3 = "..\\..\\Resources\\Documents\\anomaly_reports.csv";
             var DLL = Assembly.LoadFile(path);
             var runner_dll = DLL.GetType(class_name);
             var c = Activator.CreateInstance(runner_dll);

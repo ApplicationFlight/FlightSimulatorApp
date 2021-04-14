@@ -172,6 +172,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="README.md" />
     <None Include="Resources\Documents\anomaly_flight.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -240,6 +241,10 @@
     <Resource Include="Resources\myplay_icone1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DLL_Resources\C++\" />
+    <Folder Include="DLL_Resources\CSharp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
