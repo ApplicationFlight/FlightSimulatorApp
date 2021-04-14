@@ -1,10 +1,10 @@
 # Flight Inspection App
 
 
-*Video Demo:* https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
+**Video Demo:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
 
 This project is a WPF Desktop Application that allows to inspect a flight simulation.
-Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [*Flight Gear*](https://www.flightgear.org/).  
+Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [**Flight Gear**](https://www.flightgear.org/).  
 Flight Gear is an open-source program which is free for download for anyone onto their computer Mac, Windows, and Linux. The program simulates a plane in different modes.
 
 The Flight Gear will provide the video and the simulation and our app will provide controls to interact with, and means to inspect the ongoing flight.
@@ -92,14 +92,14 @@ On second page, we provide the following inspect tools:
 ### DLL
 The anomaly detection algorithm is provided by the user. During runtime, you have an option to add a dll, which will serve as algorithm to detced anomalies.   
 
-*Format*   
+**Format**   
 The DLL inserted needs to be in `C#`. The name of the DLL needs to be: `DLL_{algorithm name}.dll`.      
 Inside, there needs to be a `Class` called: `DLL_{algorithm name}`, within a `namespace` also called `DLL_{algorithm name}`.      
 Inside the `Class`, there needs to be a function called: `{algorithm name}`, receveing 3 path string parameters.  
 Such as: `void regression(string CSVreg, string CSVanomalt, CSVoutput)`.
 The `{algorithm name}` function is void, but the dll will create a new file with a list of the anomalies found.
 
-*Functionality*     
+**Functionality**     
 The `{algorithm name}` function the path of the 3 following files:
 - the train file: to learn from and find CorrelatedFeatures
 - the anomaly flight: to detect Anomalies against CorrelatedFearures
@@ -108,7 +108,7 @@ The `{algorithm name}` function the path of the 3 following files:
 All of these fields will be analized by *our* application and showed for the user to further inspect.     
 The description is purely subjective, each algorithm might have different representation, is up to the user to chose what description/additional info fits the best. Keep in mind this description will appear on screen, (see video demo).
 
-*Bonus*
+**Bonus**
 As said above, the dll provided must be in `C#`. But, if you wish to use `C++`, it's also possible! In fact, we provide two examples of dlls written in `C++`. ( `> DLLResources`).
 In order to use `C++` dlls, the main function in the `C++` dll will still be: `{algorithm name}`.
 You can then create a simple `C#`, composed by one `Class` and `namespace` (as described above), add a reference to the `C++` algorithm, and import there *only the {algorithm name} function*.   
