@@ -133,4 +133,4 @@ https://www.youtube.com/watch?v=mcKGCS4rSl8
  
 We wish you all a pleasant flight 
  The crew 
-Sara ,Eva ,Gali and Shmuel
+Sara ,Eva ,Gali and Samuel
