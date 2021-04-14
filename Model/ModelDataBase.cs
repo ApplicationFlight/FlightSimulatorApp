@@ -54,7 +54,7 @@ namespace FlightSimulatorApp.Model {
         List<Tuple<string, List<double>>> initialize_whole_data(string file_path) {
             List<Tuple<string, List<double>>> result = new List<Tuple<string, List<double>>>();
             XmlDocument xmlDoc = new XmlDocument();
-            string path = "..\\..\\..\\Resources\\Documents\\playback_small.xml";
+            string path = "Resources\\Documents\\playback_small.xml";
             xmlDoc.Load(path);
             XmlNodeList xnList = xmlDoc.SelectNodes("/PropertyList/generic/output/chunk");
             foreach (XmlNode xn in xnList) {
@@ -99,7 +99,7 @@ namespace FlightSimulatorApp.Model {
 
         void initialize_ad() {
             ad = new SimpleAnomalyDetector();
-            ad.learnNormal(new TimeSeries(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\Resources\\Documents\\reg_flight.csv"));
+            ad.learnNormal(new TimeSeries(AppDomain.CurrentDomain.BaseDirectory + "Resources\\Documents\\reg_flight.csv"));
         }
 
         void find_most_correlative(Dictionary<string, DataMember> data_members) {
