@@ -82,10 +82,10 @@ On the first page, we provide the following controls:
 
 On second page, we provide the following inspect tools:
 
-- List of data - clicking on the list will update with relavant data on graphs
-- Graph1 - shows values of the data selected over time
-- Graph2 - shows values of most correaltive data selected over time
-- Graph3 - shows linear regression among values selected and most correlative, in addition to points added in the last 30 seconds
+- List of features - clicking on the list will update with relavant data on graphs
+- Graph 1 (Selected) - shows values of the data selected over time
+- Graph 2 (Most Correlative)- shows values of most correaltive data selected over time
+- Graph 3 (Regression)- shows linear regression among values selected and most correlative, in addition to points added in the last 30 seconds
 
 <img src="https://github.com/ApplicationFlight/FlightSimulatorApp/blob/master/ReadmeMedia/graphsimageapp.PNG" width="350" height="400" />
 
