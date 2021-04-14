@@ -110,7 +110,7 @@ The `{algorithm name}` function the path of the 3 following files:
 All of these fields will be analized by *our* application and showed for the user to further inspect.     
 The description is purely subjective, each algorithm might have different representation, is up to the user to chose what description/additional info fits the best. Keep in mind this description will appear on screen, (see video demo).
 
-**Bonus**
+**Bonus**  
 As said above, the dll provided must be in `C#`. But, if you wish to use `C++`, it's also possible! In fact, we provide two examples of dlls written in `C++`. ( `> DLLResources`).
 In order to use `C++` dlls, the main function in the `C++` dll will still be: `{algorithm name}`.
 You can then create a simple `C#`, composed by one `Class` and `namespace` (as described above), add a reference to the `C++` algorithm, and import there *only the {algorithm name} function*.   
