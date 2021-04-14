@@ -89,7 +89,7 @@ On second page, we provide the following inspect tools:
 
 <img src="https://github.com/ApplicationFlight/FlightSimulatorApp/blob/master/ReadmeMedia/graphsimageapp.PNG" width="350" height="400" />
 
-#### DLL
+### DLL
 The anomaly detection algorithm is provided by the user. During runtime, you have an option to add a dll, which will serve as algorithm to detced anomalies.   
 
 **Format**   
