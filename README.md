@@ -41,7 +41,7 @@ Before starting using our app, there are a few steps you need to follow:
 
 
 ## Deployment
-### Technnologies
+### Technologies
 - .Net framework to create a GUI with WPF
 - MVVM architecture in a multi-threaded environment in C#
 - TCP Connection to send data to Flight-Gear
