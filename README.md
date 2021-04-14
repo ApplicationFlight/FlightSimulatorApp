@@ -3,13 +3,13 @@
 
 **Video Demo:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
 
-Our application serves as a client and inspection for the flight simulation app [**Flight Gear**](https://www.flightgear.org/).  
+This project is a WPF Desktop Application that allows to inspect a flight simulation.
+Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [**Flight Gear**](https://www.flightgear.org/).  
 Flight Gear is an open-source program which is free for download for anyone onto their computer Mac, Windows, and Linux. The program simulates a plane in different modes.
 
-Using our Flight Inspection App, you will be able to inspect the flight simulation provided by Flight Gear.
-The Flight Gear will provide the video and the simulation. Our app will provide controls to interact with, and means to inspect the ongoing flight.
+The Flight Gear will provide the video and the simulation and our app will provide controls to interact with, and means to inspect the ongoing flight.
 
-<img src="https://github.com/ApplicationFlight/eva0904/blob/main/inAction.PNG" width="600" height="300"/>
+<img src="https://github.com/ApplicationFlight/FlightSimulatorApp/ReadmeMedia/inAction.PNG" width="600" height="300"/>
 
 
 ## Getting Started
