@@ -1,7 +1,7 @@
 # Flight Inspection App
 
 
-[Click here for the Demo Video] (https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be)
+[Click here for the Demo Video](https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be)
 
 This project is a WPF Desktop Application that allows to inspect a flight simulation.
 Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [**Flight Gear**](https://www.flightgear.org/).  
