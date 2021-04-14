@@ -9,7 +9,7 @@ Flight Gear is an open-source program which is free for download for anyone onto
 
 The Flight Gear will provide the video and the simulation and our app will provide controls to interact with, and means to inspect the ongoing flight.
 
-<img src="https://github.com/ApplicationFlight/FlightSimulatorApp/ReadmeMedia/inAction.PNG" width="600" height="300"/>
+<img src="https://github.com/ApplicationFlight/FlightSimulatorApp/blob/master/ReadmeMedia/inAction.PNG" width="600" height="300"/>
 
 
 ## Getting Started
@@ -19,7 +19,7 @@ The Flight Gear will provide the video and the simulation and our app will provi
 Before starting using our app, there are a few steps you need to follow:
 1. Download the Flight Gear for your OS, at: https://www.flightgear.org/download/.
     We reccomend version 2020.3.6.
-2. Go into `Settings > Additional Settings`. Paste there:
+2. Open FG, go into `Settings > Additional Settings`. Paste there:
 ```
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 --fdm=null
@@ -33,7 +33,7 @@ Before starting using our app, there are a few steps you need to follow:
 
 ### Compiling and Running
 
-1. Download the project and oppen it in Visual Studio (we used theversion 2019  16.3.4).
+1. Download the project and open it in Visual Studio (we used Visual Studio 2019  16.3.4).
 
 2. Open FG and click on the Fly button.
 
@@ -49,6 +49,7 @@ Before starting using our app, there are a few steps you need to follow:
 
 ### MVVM & App Architechture
 The UML diagram is accessible in the `> UML` folder.
+
 The app has 3 main folders:
 #### Model
 Responsible for the communication with Flight Gear via TCP Socket. It sends the data inside the provided CSV file, so that the FG can display a video representation of it. The model notifies the View Model when data is changed.
@@ -66,7 +67,6 @@ Note: the app is indendent for a screen of 15.60-inch and more.
     - Documents: here we provide example of all CSV files in the project + `playback_small.xaml`
 - UML: here you will find the UML diagram
 
-
 ### Functionalities
 
 At the start, you will be prompted with a request to upload a CSV file.  Each line in the CSV describes one 0.1s of the flight simulation (see at Getting Started).
@@ -77,7 +77,7 @@ On the first page, we provide the following controls:
 - Joystick - simulates a real joystick based on the real-time position of the plane
 - Anomaly Inspection - it allows you to inspect anomalies occurring during the flight in real-time. Clicking on a specif anomaly will link to that time in the video
 
-<img src="https://github.com/ApplicationFlight/eva0904/blob/main/page2.PNG" width="400" height="450" />
+<img src="https://github.com/ApplicationFlight/FlightSimulatorApp/blob/master/ReadmeMedia/page2.PNG" width="400" height="450" />
 
 
 On second page, we provide the following inspect tools:
@@ -87,14 +87,14 @@ On second page, we provide the following inspect tools:
 - Graph2 - shows values of most correaltive data selected over time
 - Graph3 - shows linear regression among values selected and most correlative, in addition to points added in the last 30 seconds
 
-<img src="https://github.com/ApplicationFlight/eva0904/blob/main/graphsimageapp.PNG" width="350" height="400" />
+<img src="https://github.com/ApplicationFlight/FlightSimulatorApp/blob/master/ReadmeMedia/graphsimageapp.PNG" width="350" height="400" />
 
 #### DLL
 The anomaly detection algorithm is provided by the user. During runtime, you have an option to add a dll, which will serve as algorithm to detced anomalies.   
 
 **Format**   
 The DLL inserted needs to be in `C#`. The name of the DLL needs to be: `DLL_{algorithm name}.dll`.      
-Inside, there needs to be a `Class` called: `DLL_{algorithm name}`, within a `namspace` also called `DLL_{algorithm name}`.      
+Inside, there needs to be a `Class` called: `DLL_{algorithm name}`, within a `namespace` also called `DLL_{algorithm name}`.      
 Inside the `Class`, there needs to be a function called: `{algorithm name}`, receveing 3 path string parameters.  
 Such as: `void regression(string CSVreg, string CSVanomalt, CSVoutput)`.
 The `{algorithm name}` function is void, but the dll will create a new file with a list of the anomalies found.
