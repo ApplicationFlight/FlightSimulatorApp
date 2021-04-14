@@ -186,6 +186,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ReadmeMedia\graphsimageapp.PNG" />
+    <Resource Include="ReadmeMedia\inAction.PNG" />
+    <Resource Include="ReadmeMedia\page2.PNG" />
+    <Resource Include="ReadmeMedia\page3.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.jpg">
