@@ -1,7 +1,7 @@
 # Flight Inspection App
 
 
-**Demo video:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
+[Click here for the Demo Video] (https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be)
 
 This project is a WPF Desktop Application that allows to inspect a flight simulation.
 Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [**Flight Gear**](https://www.flightgear.org/).  
@@ -114,15 +114,15 @@ The description is purely subjective, each algorithm might have different repres
 As said above, the dll provided must be in `C#`. But, if you wish to use `C++`, it's also possible! In fact, we provide two examples of dlls written in `C++`. ( `> DLLResources`).
 In order to use `C++` dlls, the main function in the `C++` dll will still be: `{algorithm name}`.
 You can then create a simple `C#`, composed by one `Class` and `namespace` (as described above), add a reference to the `C++` algorithm, and import there *only the {algorithm name} function*.   
-Here's a video on how write and use a `C++` dll: https://www.youtube.com/watch?v=3efOjwKb9p4.
+[Here's a video on how write and use a `C++` dll](https://www.youtube.com/watch?v=3efOjwKb9p4.)
 
 Our app will then received the dll in `C#` of the simple project created.
 
-We already provide with two already-made dlls in `C#`. You can find them both at:  
-`Plug-ins > DLL_Regression`
-`Plug-ins > DLL_Circle`
-In this same folder you will have two more Dlls, those are the `C++` helpers, so please ignore them.
-As explained above, feel free to check out the `> DLL_Resources` to get for various examples of correct dlls.
+We already provide with two already-made dlls in `C#`. You can find them both at:     
+`Plug-ins > DLL_Regression`  
+`Plug-ins > DLL_Circle`  
+In this same folder you will have two more Dlls, those are the `C++` helpers, so please ignore them.  
+As explained above, feel free to check out the `> DLL_Resources` to get for various examples of correct dlls.  
 
 ## Authors
 - [Sara Spagnoletto](https://github.com/saraspagno)
