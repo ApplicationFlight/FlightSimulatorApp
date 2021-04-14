@@ -35,9 +35,9 @@ Before starting using our app, there are a few steps you need to follow:
 ### Compiling and Running
 
 1. Download the project and open it in Visual Studio (we used Visual Studio 2019  16.3.4).
-
-2. Open FG and click on the Fly button.
-
+2. Define the sln directory as the working directory in: `> Properties > Build > Output Path`
+3. Define the build platfrom to `x86` in: `> Build > Configuration Menager > Platform`
+3. Open FG and click on the Fly button.
 3. Start the App from Visual Studio
 
 
