@@ -42,6 +42,7 @@ Before starting using our app, there are a few steps you need to follow:
 
 
 ## Deployment
+
 ### Technologies
 - .Net framework to create a GUI with WPF
 - MVVM architecture in a multi-threaded environment in `C#`
@@ -60,7 +61,6 @@ Responsible for the connection between Model and View. Here you will find one Vi
 Responsible for the View. In this folder you will find all the  `XAML` files UserControls.
 We advise you to move the window of the App and the window of Flight Gear in a way that half of the screen shows the FG and the other half shows the App:
 Note: the app is indendent for a screen of 15.60-inch and more.
-
 ### Other Folders:
 - Plug-ins: here we provide two examples of ready dlls to use
 - ReadmeMedia: here we inserted the images used for this readme
