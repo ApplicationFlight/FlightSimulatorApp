@@ -3,7 +3,7 @@
 
 **Video Demo:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
 
-Our application serves as a client and inspection for the fligh simulation app **Flight Gear**. https://www.flightgear.org/.
+Our application serves as a client and inspection for the flight simulation app [**Flight Gear**](https://www.flightgear.org/).  
 Flight Gear is an open-source program which is free for download for anyone onto their computer Mac, Windows, and Linux. The program simulates a plane in different modes.
 
 Using our Flight Inspection App, you will be able to inspect the flight simulation provided by Flight Gear.
