@@ -1,7 +1,7 @@
 # Flight Inspection App
 
 
-**Video Demo:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
+**Demo video:** https://www.youtube.com/watch?v=Vkt-fiWrFTI&feature=youtu.be
 
 This project is a WPF Desktop Application that allows to inspect a flight simulation.
 Using our Flight Inspection App, you will be able to inspect the flight simulation provided by [**Flight Gear**](https://www.flightgear.org/).  
@@ -20,9 +20,10 @@ Before starting using our app, there are a few steps you need to follow:
 1. Download the Flight Gear for your OS, at: https://www.flightgear.org/download/.
     We reccomend version 2020.3.6.
 2. Open FG, go into `Settings > Additional Settings`. Paste there:
-
+```
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 --fdm=null
+```
 
 
 ![instruction](https://user-images.githubusercontent.com/58266146/114233455-03010d00-9986-11eb-99c7-0de94bbd0447.png)
@@ -43,9 +44,9 @@ Before starting using our app, there are a few steps you need to follow:
 ## Deployment
 ### Technologies
 - .Net framework to create a GUI with WPF
-- MVVM architecture in a multi-threaded environment in C#
+- MVVM architecture in a multi-threaded environment in `C#`
 - TCP Connection to send data to Flight-Gear
-- Dll provided by the user for Anomaly Inspection in C#
+- Dll provided by the user for Anomaly Inspection in `C#`
 
 ### MVVM & App Architechture
 The UML diagram is accessible in the `> UML` folder.
@@ -60,12 +61,13 @@ Responsible for the View. In this folder you will find all the  `XAML` files Use
 We advise you to move the window of the App and the window of Flight Gear in a way that half of the screen shows the FG and the other half shows the App:
 Note: the app is indendent for a screen of 15.60-inch and more.
 
-## Other Folders:
+### Other Folders:
 - Plug-ins: here we provide two examples of ready dlls to use
 - ReadmeMedia: here we inserted the images used for this readme
 - Resources: here we provide images and background for for the view
     - Documents: here we provide example of all CSV files in the project + `playback_small.xaml`
 - UML: here you will find the UML diagram
+- DLL_Resources: here you can check the actual code of both the `C#` and the `C++` dlls used
 
 ### Functionalities
 
@@ -116,6 +118,11 @@ Here's a video on how write and use a `C++` dll: https://www.youtube.com/watch?v
 
 Our app will then received the dll in `C#` of the simple project created.
 
+We already provide with two already-made dlls in `C#`. You can find them both at:  
+`Plug-ins > DLL_Regression`
+`Plug-ins > DLL_Circle`
+In this same folder you will have two more Dlls, those are the `C++` helpers, so please ignore them.
+As explained above, feel free to check out the `> DLL_Resources` to get for various examples of correct dlls.
 
 ## Authors
 - [Sara Spagnoletto](https://github.com/saraspagno)
